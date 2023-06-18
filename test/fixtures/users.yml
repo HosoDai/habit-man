@@ -1,1 +1,4 @@
-# 一意性のテストを通すために一時的に空にしておく
+michael:
+  name: Michael Example
+  email: michael@example.com
+  password_digest: <%= User.digest('password') %>
