@@ -1,1 +1,13 @@
-<%= @group.name %>, <%= @group.owner_id %>
+<% provide(:title, @group.name) %>
+<div class="row">
+  <aside class="col-md-4">
+    <section class="user_info">
+      <h1>
+        <%= @group.name %>
+      </h1>
+    </section>
+  </aside>
+  <%= month_calendar do |date| %>
+    <%= date %>
+  <% end %>
+</div>

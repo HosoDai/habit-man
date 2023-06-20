@@ -9,8 +9,8 @@ class User < ApplicationRecord
   validates :password, presence: true, length: { minimum: 6 }
 
   # アソシエーションを記述
-  has_many :groupusers
-  has_many :groups, through: :groupusers
+  has_many :group_users
+  has_many :groups, through: :group_users
 
   # 渡された文字列のハッシュ値を返す
   def User.digest(string)

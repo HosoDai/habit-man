@@ -1,5 +1,6 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
+@import "simple_calendar";
 
 /* mixins, variables, etc. */
 
@@ -34,6 +35,10 @@ textarea {
 
 .center h1 {
   margin-bottom: 10px;
+}
+
+.container {
+  text-align: center;
 }
 
 /* typography */
