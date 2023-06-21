@@ -37,5 +37,9 @@ class GroupsCreateTest < ActionDispatch::IntegrationTest
     follow_redirect!
     assert_template "groups/show"
     assert_not flash.empty?
+    # グループ一覧表示テスト
+    get groups_path
+    assert_template "groups/index"
+    # assert_select "a[href=?]", group_path(params[owner_id: @user.id]), count: 1
   end
 end
