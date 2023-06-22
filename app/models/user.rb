@@ -11,6 +11,7 @@ class User < ApplicationRecord
   # アソシエーションを記述
   has_many :group_users
   has_many :groups, through: :group_users
+  has_many :memos, dependent: :destroy
 
   # 渡された文字列のハッシュ値を返す
   def User.digest(string)
