@@ -8,6 +8,7 @@
     </section>
   </aside>
   <%= month_calendar do |date| %>
-    <%= link_to date, memos_path %>
+    <% # その日のメモの一覧に飛ぶ %>
+    <%= link_to date, group_memos_path(@group, memo_date: date) %>
   <% end %>
 </div>

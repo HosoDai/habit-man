@@ -10,7 +10,8 @@ class GroupsController < ApplicationController
 
   def show
     @group = Group.find(params[:id])
-    session[:group_id] = @group.id
+    # session[:group_id] = @group.id
+    # @memos = @group.memos
   end
 
   def create
