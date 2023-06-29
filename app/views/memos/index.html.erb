@@ -18,7 +18,7 @@
   <h2>メモ一覧</h2>
   <div>
     <% @memos.each do |memo| %>
-      <%= link_to memo.user_id, memo_path(memo.id) %><%= memo.group_id %><br>
+      <%= link_to memo.reason, memo_path(memo.id) %>, メモグループid => <%= memo.group_id %><br>
     <% end %>
   </div>
 </div>

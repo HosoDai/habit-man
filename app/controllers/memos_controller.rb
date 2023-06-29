@@ -4,7 +4,7 @@ class MemosController < ApplicationController
     @memo = Memo.new(memo_params)
     @memo.user_id = current_user.id
     # あとで修正
-    @memo.group_id = Group.first.id
+    @memo.group_id = session[:group_id]
     if @memo.save
       flash[:success] = "You succeeded in creating new memo!"
       redirect_to @memo
