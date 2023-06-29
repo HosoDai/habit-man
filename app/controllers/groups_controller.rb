@@ -17,7 +17,7 @@ class GroupsController < ApplicationController
     @group.owner_id = current_user.id
     if @group.save
       @group.users << current_user
-      flash[:success] = "Yout succeeded in creating new group!"
+      flash[:success] = "You succeeded in creating new group!"
       redirect_to @group
     else
       render "new", status: :unprocessable_entity

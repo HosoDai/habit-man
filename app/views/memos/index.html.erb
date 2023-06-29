@@ -1,0 +1,24 @@
+<% provide(:title, "Memos index") %>
+<h1>Memos index!</h1>
+
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+    <%= form_with(model: @memo) do |f| %>
+      <%= render "shared/error_messages", object: f.object %>
+
+      <%= f.label :attendance_status %>
+      <%= f.select :attendance_status, Memo.attendance_statuses.keys.to_a, {}, class: "form-control" %>
+
+      <%= f.label :reason %>
+      <%= f.text_field :reason, class: "form-control" %>
+
+      <%= f.submit "Submit", class: "btn btn-primary" %>
+    <% end %>
+  </div>
+  <h2>メモ一覧</h2>
+  <div>
+    <% @memos.each do |memo| %>
+      <%= link_to memo.user_id, memo_path(memo.id) %><%= memo.group_id %><br>
+    <% end %>
+  </div>
+</div>
