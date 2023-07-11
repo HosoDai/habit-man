@@ -7,5 +7,7 @@ Rails.application.routes.draw do
   resources :users
   resources :groups do
     resources :memos
+    get :join
+    post :invite
   end
 end

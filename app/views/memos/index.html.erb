@@ -24,7 +24,7 @@
   <div>
     <% @memos.each do |memo| %>
       <% # 前のリンクで踏んだ日付に保存されたメモのみ表示 %>
-      <%= link_to memo.reason, "#" %>, メモグループid => <%= memo.group_id %><br>
+      <%= link_to memo.reason, group_memo_path(@group, memo) %>, メモグループid => <%= memo.group_id %>, メモユーザー名 => <%= memo.user.name %><br>
     <% end %>
   </div>
 </div>

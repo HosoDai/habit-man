@@ -10,8 +10,6 @@ class GroupsController < ApplicationController
 
   def show
     @group = Group.find(params[:id])
-    # session[:group_id] = @group.id
-    # @memos = @group.memos
   end
 
   def create
@@ -23,6 +21,32 @@ class GroupsController < ApplicationController
       redirect_to @group
     else
       render "new", status: :unprocessable_entity
+    end
+  end
+
+  def invite
+    @user = User.find_by(email: params[:group][:email].downcase)
+    @group = Group.find(params[:group_id])
+    # 招待したメールアドレスがユーザーデータベースに存在すれば招待メールを送信
+    if @user
+      GroupMailer.invite_member(@group, @user).deliver_now
+      flash[:success] = "You succeeded in inviting new member!"
+      redirect_to @group
+    else
+      flash.now[:danger] = "Invalid email or Not registered email"
+      render "groups/show", status: :unprocessable_entity
+    end
+  end
+
+  def join
+    user = User.find(params[:user])
+    reset_session
+    log_in user
+    @group = Group.find(params[:group_id])
+    unless @group.users.include?(user)
+      @group.users << user
+      flash[:success] = "You succeeded in joing a group!"
+      redirect_to group_path(@group)
     end
   end
 

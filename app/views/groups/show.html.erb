@@ -11,4 +11,23 @@
     <% # その日のメモの一覧に飛ぶ %>
     <%= link_to date, group_memos_path(@group, memo_date: date) %>
   <% end %>
+
+  <div>
+    <h4>メンバー一覧</h4>
+    <% @group.users.each do |user| %>
+      <%= user.name %><br>
+    <% end %>
+  </div>
+
+  <div>
+    <% if current_user.id == @group.owner_id %>
+      <h4>メンバー招待フォーム</h4>
+      <%= form_with(url: group_invite_path(@group), scope: :group) do |f| %>
+        <%= f.label :email %>
+        <%= f.email_field :email, class: "form-control" %>
+
+        <%= f.submit "Ivite User", class: "btn btn-primary" %>
+      <% end %>
+    <% end %>
+  </div>
 </div>

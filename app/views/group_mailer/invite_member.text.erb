@@ -1,0 +1,5 @@
+Hi <%= @user.name %>,
+
+You have been invited to join the group <%= @group.name %>. Click the link below to accept the invitation.
+
+<%= group_join_url(@group, user: @user) %>

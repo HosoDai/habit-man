@@ -17,6 +17,16 @@ Rails.application.configure do
   # Enable server timing
   config.server_timing = true
 
+
+  # 追記箇所
+  config.action_mailer.raise_delivery_errors = false
+
+  host = 'localhost:3000' # ここをコピペすると失敗します。自分の環境のホストに変えてください。
+  # クラウドIDEの場合は以下をお使いください
+  # config.action_mailer.default_url_options = { host: host, protocol: 'https' }
+  # localhostで開発している場合は以下をお使いください
+  config.action_mailer.default_url_options = { host: host, protocol: 'http' }
+
   # Enable/disable caching. By default caching is disabled.
   # Run rails dev:cache to toggle caching.
   if Rails.root.join("tmp/caching-dev.txt").exist?

@@ -1,0 +1,7 @@
+<h1>Member Management App</h1>
+
+<p>Hi <%= @user.name %>,</p>
+
+<p>You have been invited to join the group <%= @group.name %>. Click the link below to accept the invitation.</p>
+
+<%= link_to "Join the group", group_join_url(@group, user: @user) %>
