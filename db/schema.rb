@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_07_03_045902) do
+ActiveRecord::Schema[7.0].define(version: 2023_07_12_025951) do
   create_table "group_users", force: :cascade do |t|
     t.integer "user_id"
     t.integer "group_id"
@@ -30,7 +30,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_07_03_045902) do
   create_table "memos", force: :cascade do |t|
     t.integer "user_id"
     t.integer "group_id"
-    t.string "reason"
+    t.string "description"
     t.integer "attendance_status", default: 0, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

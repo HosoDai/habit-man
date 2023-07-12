@@ -1,4 +1,5 @@
 class GroupsController < ApplicationController
+  before_action :group_member, only: [:show]
 
   def index
     @groups = current_user.groups
@@ -54,5 +55,10 @@ class GroupsController < ApplicationController
   private
     def group_params
       params.require(:group).permit(:name)
+    end
+
+    def group_member
+      @group = Group.find(params[:id])
+      redirect_to(root_url, status: :see_other) unless @group.users.include?(current_user)
     end
 end

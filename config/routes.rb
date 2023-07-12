@@ -5,8 +5,8 @@ Rails.application.routes.draw do
   post "/login", to: "sessions#create"
   delete "/logout", to: "sessions#destroy"
   resources :users
-  resources :groups do
-    resources :memos
+  resources :groups, only: [:index, :new, :show, :create] do
+    resources :memos, only: [:create, :show, :index]
     get :join
     post :invite
   end

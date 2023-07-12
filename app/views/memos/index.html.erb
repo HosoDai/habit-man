@@ -11,8 +11,8 @@
       <%= f.label :attendance_status %>
       <%= f.select :attendance_status, Memo.attendance_statuses.keys.to_a, {}, class: "form-control" %>
 
-      <%= f.label :reason %>
-      <%= f.text_field :reason, class: "form-control" %>
+      <%= f.label :description %>
+      <%= f.text_field :description, class: "form-control" %>
 
       <%= f.hidden_field :memo_date, :value => @date, class: "form-control" %>
 
@@ -24,7 +24,7 @@
   <div>
     <% @memos.each do |memo| %>
       <% # 前のリンクで踏んだ日付に保存されたメモのみ表示 %>
-      <%= link_to memo.reason, group_memo_path(@group, memo) %>, メモグループid => <%= memo.group_id %>, メモユーザー名 => <%= memo.user.name %><br>
+      <%= link_to memo.description, group_memo_path(@group, memo) %>, メモグループid => <%= memo.group_id %>, メモユーザー名 => <%= memo.user.name %><br>
     <% end %>
   </div>
 </div>

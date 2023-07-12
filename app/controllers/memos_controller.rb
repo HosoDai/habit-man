@@ -1,4 +1,5 @@
 class MemosController < ApplicationController
+  before_action :group_member, only: [:index]
 
   def create
     @group = Group.find(params[:group_id])
@@ -29,6 +30,11 @@ class MemosController < ApplicationController
 
   private
     def memo_params
-      params.require(:memo).permit(:attendance_status, :reason)
+      params.require(:memo).permit(:attendance_status, :description)
+    end
+
+    def group_member
+      @group = Group.find(params[:group_id])
+      redirect_to(root_url, status: :see_other) unless @group.users.include?(current_user)
     end
 end
