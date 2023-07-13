@@ -101,6 +101,5 @@ Rails.application.configure do
     :user_name      => ENV['MAILGUN_SMTP_LOGIN'],
     :password       => ENV['MAILGUN_SMTP_PASSWORD'],
     :authentication => :plain,
-    :enable_starttls_auto: true
   }
 end
