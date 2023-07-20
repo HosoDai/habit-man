@@ -92,14 +92,18 @@ Rails.application.configure do
   config.active_record.dump_schema_after_migration = false
 
   # メール設定
+  config.action_mailer.perform_caching = false
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.perform_deliveries = true
   host = 'membermanagementapp-d0c147b97826.herokuapp.com'
   config.action_mailer.default_url_options = { host: host }
   ActionMailer::Base.smtp_settings = {
-    :address        => ENV['MAILGUN_SMTP_SERVER'],
-    :port           => ENV['MAILGUN_SMTP_PORT'],
-    :domain         => host,
-    :user_name      => ENV['MAILGUN_SMTP_LOGIN'],
-    :password       => ENV['MAILGUN_SMTP_PASSWORD'],
-    :authentication => :plain,
+    :address        => 'smtp.sendgrid.net',
+    :port           => '587',
+    :domain         => 'herokuapp.com',
+    :user_name      => 'apikey',
+    :password       => ENV['SENDGRID_API_KEY'],
+    :enable_starttls_auto => true,
+    :authentication => true,
   }
 end
