@@ -1,24 +1,32 @@
 <% provide(:title, "Log in") %>
-<h1>Log in</h1>
 
-<div class="row">
-  <div class="col-md-6 col-md-offset-3">
-    <%= form_with(url: login_path, scope: :session) do |f| %>
+<body class="text-center vsc-initialized">
+  <main class="form-signin w-100 m-auto">
+     <%= form_with(url: login_path, scope: :session) do |f| %>
 
-      <%= f.label :email %>
-      <%= f.email_field :email, class: "form-control" %>
+      <%= image_tag "logo_m01.png", size: "72x57" %>
 
-      <%= f.label :password %>
-      <%= f.password_field :password, class: "form-control" %>
+      <h1 class="h3 mb-3 fw-normal">Log in</h1>
+
+      <div class="form-floating">
+        <%= f.label(:email, "Email address") %>
+        <%= f.email_field :email, class: "form-control", id: "session_email", placeholder: "name@example.com" %>
+      </div>
+
+      <div class="form-floating">
+        <%= f.label(:password, "Password") %>
+        <%= f.password_field :password, class: "form-control", id: "session_password", placeholder: "Password" %>
+      </div>
+
 
       <%= f.label :remember_me, class: "checkbox inline" do %>
         <%= f.check_box :remember_me %>
         <span>Remember me on this computer</span>
       <% end %>
 
-      <%= f.submit "Log in", class: "btn btn-primary" %>
+      <%= f.submit "Log in", class: "w-100 btn btn-lg btn-primary" %>
     <% end %>
 
-    <p>New user? <%= link_to "Sign up now!", signup_path %></p>
-  </div>
-</div>
+    <p class="login-path">New user? <%= link_to "Sign up now!", signup_path %></p>
+  </main>
+</body>

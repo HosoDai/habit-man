@@ -1,24 +1,37 @@
 <% provide(:title, "Sign up") %>
-<h1>Sign up</h1>
 
-<div class="row">
-  <div class="col-md-6 col-md-offset-3">
+<body class="text-center vsc-initialized">
+  <main class="form-signin w-100 m-auto">
     <%= form_with(model: @user) do |f| %>
       <%= render "shared/error_messages", object: f.object %>
 
-      <%= f.label :name %>
-      <%= f.text_field :name, class: "form-control" %>
+      <%= image_tag "logo_m01.png", size: "72x57" %>
 
-      <%= f.label :email %>
-      <%= f.email_field :email, class: "form-control" %>
+      <h1 class="h3 mb-3 fw-normal">Please sign up</h1>
 
-      <%= f.label :password %>
-      <%= f.password_field :password, class: "form-control" %>
+      <div class="form-floating">
+        <%= f.label(:name, "User Name") %>
+        <%= f.text_field :name, class: "form-control", id: "user_name", placeholder: "name" %>
+      </div>
 
-      <%= f.label :password_confirmation, "Confirmation" %>
-      <%= f.password_field :password_confirmation, class: "form-control" %>
+      <div class="form-floating">
+        <%= f.label(:email, "Email address") %>
+        <%= f.email_field :email, class: "form-control", id: "user_email", placeholder: "name@example.com" %>
+      </div>
 
-      <%= f.submit "Create my account", class: "btn btn-primary" %>
+      <div class="form-floating">
+        <%= f.label(:password, "Password") %>
+        <%= f.password_field :password, class: "form-control", id: "user_password", placeholder: "password" %>
+      </div>
+
+
+      <div class="form-floating">
+        <%= f.label(:password_confirmation, "Password Confirmation") %>
+        <%= f.password_field :password_confirmation, class: "form-control", id: "user_password_confirmation", placeholder: "password_confirmation" %>
+      </div>
+
+      <%= f.submit "Create my account", class: "w-100 btn btn-lg btn-primary" %>
     <% end %>
-  </div>
-</div>
+  </main>
+</body>
+
