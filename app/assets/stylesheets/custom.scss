@@ -50,6 +50,7 @@ body {
 
 
 /* login form */
+
 .login-path {
   margin-top: 10px;
 }
@@ -82,7 +83,15 @@ body {
 
 
 /* groups/index */
+
 th {
+  text-align: center;
+}
+
+
+/* memos/show */
+
+td {
   text-align: center;
 }
 
