@@ -1,9 +1,34 @@
-<div class="row">
-  <h2>所属グループ一覧</h2>
-  <div>
-    <% @groups.each do |group| %>
-      <%= link_to group.name, group_path(group.id) %>, <%= group.owner_id %><br>
-    <% end %>
+<% provide(:title, "Group index") %>
+
+<div class="text-center vsc-initialized" style="padding-top: 50px">
+  <div class="w-200 m-auto">
+    <h1 class="h3 mb-3 fw-normal">Groups</h1>
+
+    <div class="text-right" style="margin-bottom: 40px">
+      <%= link_to "Create new group", new_group_path, class: "w-100 btn btn-lg btn-primary" %>
+    </div>
+
+    <table class="table">
+      <thead>
+        <tr>
+          <th>group image</th>
+          <th>group name</th>
+          <th>owner</th>
+          <th>member count</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @groups.each do |group| %>
+          <tr>
+            <td>#</td>
+            <td><%= link_to group.name, group_path(group.id) %></td>
+            <td><%= User.find_by(id: group.owner_id).name %></td>
+            <td><%= group.users.count %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
   </div>
-  <%= link_to "Create new group", new_group_path, class: "btn btn-primary" %>
 </div>
+
+
