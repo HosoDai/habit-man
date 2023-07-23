@@ -1,10 +1,9 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 @import "simple_calendar";
+@import "font-awesome";
 
 /* mixins, variables, etc. */
-
-// $gray-medium-light: #eaeaea;
 
 
 @mixin box_sizing {
@@ -23,55 +22,15 @@ body {
   background-color: #f5f5f5;
 }
 
-// section {
-//   overflow: auto;
-// }
+.container {
+  width: 95%;
+  margin: 0 auto;
+}
 
-// textarea {
-//   resize: vertical;
-// }
+.row {
+  padding-top: 50px;
+}
 
-// .center {
-//   text-align: center;
-//   h1 {
-//     margin-bottom: 10px;
-//   }
-// }
-
-// .center h1 {
-//   margin-bottom: 10px;
-// }
-
-// .container {
-//   text-align: center;
-// }
-
-/* typography */
-
-// h1, h2, h3, h4, h5, h6 {
-//   line-height: 1;
-// }
-
-// h1 {
-//   font-size: 3em;
-//   letter-spacing: -2px;
-//   margin-bottom: 30px;
-//   text-align: center;
-// }
-
-// h2 {
-//   font-size: 1.2em;
-//   letter-spacing: -1px;
-//   margin-bottom: 30px;
-//   text-align: center;
-//   font-weight: normal;
-//   color: #777;
-// }
-
-// p {
-//   font-size: 1.1em;
-//   line-height: 1.7em;
-// }
 
 /* sign-in form */
 
@@ -112,6 +71,12 @@ body {
     color: #fff;
     text-decoration: none;
   }
+}
+
+
+/* groups/show */
+.show-container {
+  margin-top: 50px;
 }
 
 /* footer */
@@ -171,19 +136,6 @@ aside {
 .gravatar_edit {
   margin-top: 15px;
 }
-
-/* forms */
-
-// input, textarea, select, .uneditable-input {
-//   border: 1px solid #bbb;
-//   width: 100%;
-//   margin-bottom: 15px;
-//   @include box_sizing;
-// }
-
-// input {
-//   height: auto !important;
-// }
 
 #error_explanation {
   color: red;

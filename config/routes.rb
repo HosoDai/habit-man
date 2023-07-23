@@ -9,5 +9,6 @@ Rails.application.routes.draw do
     resources :memos, only: [:create, :show, :index]
     get :join
     post :invite
+    get :member
   end
 end

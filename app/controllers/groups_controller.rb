@@ -11,6 +11,7 @@ class GroupsController < ApplicationController
 
   def show
     @group = Group.find(params[:id])
+    @memos = @group.memos
   end
 
   def create
@@ -49,6 +50,11 @@ class GroupsController < ApplicationController
       flash[:success] = "You succeeded in joing a group!"
       redirect_to group_path(@group)
     end
+  end
+
+  def member
+    @group = Group.find(params[:group_id])
+    @members = @group.users
   end
 
 

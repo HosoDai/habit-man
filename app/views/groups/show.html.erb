@@ -1,33 +1,17 @@
 <% provide(:title, @group.name) %>
+
 <div class="row">
-  <aside class="col-md-4">
-    <section class="user_info">
-      <h1>
-        <%= @group.name %>
-      </h1>
-    </section>
-  </aside>
-  <%= month_calendar do |date| %>
-    <% # その日のメモの一覧に飛ぶ %>
-    <%= link_to date, group_memos_path(@group, memo_date: date) %>
-  <% end %>
-
-  <div>
-    <h4>メンバー一覧</h4>
-    <% @group.users.each do |user| %>
-      <%= user.name %><br>
-    <% end %>
+  <div class="col-md-3">
+    <%= render "groups/sidebar" %>
   </div>
-
-  <div>
-    <% if current_user.id == @group.owner_id %>
-      <h4>メンバー招待フォーム</h4>
-      <%= form_with(url: group_invite_path(@group), scope: :group) do |f| %>
-        <%= f.label :email %>
-        <%= f.email_field :email, class: "form-control" %>
-
-        <%= f.submit "Invite User", class: "btn btn-primary" %>
+  <div class="col-md-9">
+    <%= month_calendar do |date| %>
+      <% # その日のメモの一覧に飛ぶ %>
+      <%= link_to date, group_memos_path(@group, memo_date: date) %><br>
+      <% if @memos.where(memo_date: date).count > 0 %>
+        <%= "show more" %>
       <% end %>
     <% end %>
   </div>
 </div>
+
