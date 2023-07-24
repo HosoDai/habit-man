@@ -1,37 +1,68 @@
 <% provide(:title, "Sign up") %>
 
-<body class="text-center vsc-initialized">
-  <main class="form-signin w-100 m-auto">
-    <%= form_with(model: @user) do |f| %>
-      <%= render "shared/error_messages", object: f.object %>
+<section class="vh-100" style="background-color: #eee;">
+  <div class="container h-100">
+    <div class="row d-flex justify-content-center align-items-center h-100">
+      <div class="col-lg-12 col-xl-11">
+        <div class="card text-black" style="border-radius: 25px;">
+          <div class="card-body p-md-5">
+            <div class="row justify-content-center">
+              <div class="col-md-10 col-lg-6 col-xl-5 order-2 order-lg-1">
 
-      <%= image_tag "logo_m01.png", size: "72x57" %>
+                <p class="text-center h1 fw-bold mb-5 mx-1 mx-md-4 mt-4">Sign up</p>
 
-      <h1 class="h3 mb-3 fw-normal">Please sign up</h1>
+                <%= form_with(model: @user, class: "mx-1 mx-md-4") do |f| %>
 
-      <div class="form-floating">
-        <%= f.label(:name, "User Name") %>
-        <%= f.text_field :name, class: "form-control", id: "user_name", placeholder: "name" %>
+                  <div class="d-flex flex-row align-items-center mb-4">
+                    <i class="fas fa-user fa-lg me-3 fa-fw"></i>
+                    <div class="form-outline flex-fill mb-0 form-floating">
+                      <%= f.text_field :name, class: "form-control", id: "user_name", placeholder: "name" %>
+                      <%= f.label(:name, "Your name") %>
+                    </div>
+                  </div>
+
+                  <div class="d-flex flex-row align-items-center mb-4">
+                    <i class="fas fa-envelope fa-lg me-3 fa-fw"></i>
+                    <div class="form-outline flex-fill mb-0 form-floating">
+                      <%= f.email_field :email, class: "form-control", id: "user_email", placeholder: "name@example.com" %>
+                      <%= f.label(:email, "Your Email") %>
+                    </div>
+                  </div>
+
+                  <div class="d-flex flex-row align-items-center mb-4">
+                    <i class="fas fa-lock fa-lg me-3 fa-fw"></i>
+                    <div class="form-outline flex-fill mb-0 form-floating">
+                      <%= f.password_field :password, class: "form-control", id: "user_password", placeholder: "password" %>
+                      <%= f.label(:password, "Password") %>
+                    </div>
+                  </div>
+
+                  <div class="d-flex flex-row align-items-center mb-4">
+                    <i class="fas fa-key fa-lg me-3 fa-fw"></i>
+                    <div class="form-outline flex-fill mb-0 form-floating">
+                      <%= f.password_field :password_confirmation, class: "form-control", id: "user_password_confirmation", placeholder: "password" %>
+                      <%= f.label(:password_confirmation, "Repeat your password") %>
+                    </div>
+                  </div>
+
+                  <div class="d-flex justify-content-center mx-4 mb-3 mb-lg-4">
+                    <%= f.submit "Create my account", class: "btn btn-primary btn-lg" %>
+                  </div>
+
+                <% end %>
+
+              </div>
+              <div class="col-md-10 col-lg-6 col-xl-7 d-flex align-items-center order-1 order-lg-2">
+
+                <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-registration/draw1.webp"
+                  class="img-fluid" alt="Sample image">
+
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
-
-      <div class="form-floating">
-        <%= f.label(:email, "Email address") %>
-        <%= f.email_field :email, class: "form-control", id: "user_email", placeholder: "name@example.com" %>
-      </div>
-
-      <div class="form-floating">
-        <%= f.label(:password, "Password") %>
-        <%= f.password_field :password, class: "form-control", id: "user_password", placeholder: "password" %>
-      </div>
-
-
-      <div class="form-floating">
-        <%= f.label(:password_confirmation, "Password Confirmation") %>
-        <%= f.password_field :password_confirmation, class: "form-control", id: "user_password_confirmation", placeholder: "password_confirmation" %>
-      </div>
-
-      <%= f.submit "Create my account", class: "w-100 btn btn-lg btn-primary" %>
-    <% end %>
-  </main>
-</body>
+    </div>
+  </div>
+</section>
 

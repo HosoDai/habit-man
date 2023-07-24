@@ -2,7 +2,7 @@ source "https://rubygems.org"
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 gem "rails",           "7.0.4"
-gem "bootstrap-sass",  "3.4.1"
+gem "bootstrap",       "5.2.3"
 gem "font-awesome-sass", "6.4.0"
 gem "simple_calendar", "2.4.3"
 gem "bcrypt",          "3.1.18"
