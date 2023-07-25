@@ -1,25 +1,17 @@
 <div class="border-end bg-white" id="sidebar-wrapper">
-  <h1 class="h3 mb-3 fw-normal"><%= @group.name %></h1>
-  <div class="list-group list-group-flush">
-    <%= link_to "#", class: "list-group-item list-group-item-action list-group-item-light p-3" do %>
-      <i class="fa-solid fa-house"></i>
-      Home
-    <% end %>
-    <%= link_to "#", class: "list-group-item list-group-item-action list-group-item-light p-3" do %>
-      <i class="fa-solid fa-users"></i>
-      Members
-    <% end %>
-    <%= link_to "#", class: "list-group-item list-group-item-action list-group-item-light p-3" do %>
-      <i class="fa-solid fa-gear"></i>
-      Settings
-    <% end %>
+      <div class="sidebar-heading border-bottom bg-light"><%= @group.name %></div>
+      <div class="list-group list-group-flush">
+          <%= link_to @group, class: "list-group-item list-group-item-action list-group-item-light p-3" do %>
+            <i class="fa-solid fa-house"></i>
+            Home
+          <% end %>
+          <%= link_to "#", class: "list-group-item list-group-item-action list-group-item-light p-3" do %>
+            <i class="fa-solid fa-users"></i>
+            Members
+          <% end %>
+          <%= link_to "#", class: "list-group-item list-group-item-action list-group-item-light p-3" do %>
+            <i class="fa-solid fa-gear"></i>
+            Settings
+          <% end %>
+      </div>
   </div>
-  <% if current_user.id == @group.owner_id %>
-    <%= form_with(url: group_invite_path(@group), scope: :group) do |f| %>
-      <%= f.label :email %>
-      <%= f.email_field :email, class: "form-control" %>
-
-      <%= f.submit "Invite User", class: "btn btn-primary" %>
-    <% end %>
-  <% end %>
-</div>

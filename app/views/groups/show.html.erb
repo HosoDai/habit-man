@@ -1,17 +1,22 @@
 <% provide(:title, @group.name) %>
 
-<div class="row">
-  <div class="col-md-3">
+<div class="row" id="wrapper">
+  <!-- Sidebar-->
+  <div class="col-md-2">
     <%= render "groups/sidebar" %>
   </div>
-  <div class="col-md-9">
-    <%= month_calendar do |date| %>
-      <% # その日のメモの一覧に飛ぶ %>
-      <%= link_to date, group_memos_path(@group, memo_date: date) %><br>
-      <% if @memos.where(memo_date: date).count > 0 %>
-        <%= "show more" %>
-      <% end %>
-    <% end %>
+  <!-- Page content wrapper-->
+  <div id="page-content-wrapper" class="container-fluid col-md-10">
+      <!-- Page content-->
+      <div class="container-fluid">
+          <%= month_calendar do |date| %>
+            <% # その日のメモの一覧に飛ぶ %>
+            <%= link_to date, group_memos_path(@group, memo_date: date) %><br>
+            <% if @memos.where(memo_date: date).count > 0 %>
+              <%= "show more" %>
+            <% end %>
+          <% end %>
+      </div>
   </div>
 </div>
 
