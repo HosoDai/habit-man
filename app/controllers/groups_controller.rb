@@ -3,6 +3,7 @@ class GroupsController < ApplicationController
 
   def index
     @groups = current_user.groups
+    @group = Group.new
   end
 
   def new
@@ -17,18 +18,23 @@ class GroupsController < ApplicationController
   def create
     @group = Group.new(group_params)
     @group.owner_id = current_user.id
+    # @groups = current_user.groups
     if @group.save
       @group.users << current_user
       flash[:success] = "You succeeded in creating new group!"
       redirect_to @group
     else
-      render "new", status: :unprocessable_entity
+      # render "index", status: :unprocessable_entity
+      respond_to do |format|
+        format.js { render :index, status: :unprocessable_entity }
+      end
     end
   end
 
   def invite
     @user = User.find_by(email: params[:group][:email].downcase)
     @group = Group.find(params[:group_id])
+    # @members = @group.users
     # 招待したメールアドレスがユーザーデータベースに存在すれば招待メールを送信
     if @user
       GroupMailer.invite_member(@group, @user).deliver_now
@@ -36,7 +42,7 @@ class GroupsController < ApplicationController
       redirect_to @group
     else
       flash.now[:danger] = "Invalid email or Not registered email"
-      render "groups/show", status: :unprocessable_entity
+      render "member", status: :unprocessable_entity
     end
   end
 
@@ -45,10 +51,13 @@ class GroupsController < ApplicationController
     reset_session
     log_in user
     @group = Group.find(params[:group_id])
-    unless @group.users.include?(user)
+    if @group.users.exclude?(user)
       @group.users << user
       flash[:success] = "You succeeded in joing a group!"
       redirect_to group_path(@group)
+    else
+      redirect_to group_path(@group)
+      flash[:warning] = "You have already joined this group"
     end
   end
 

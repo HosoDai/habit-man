@@ -4,8 +4,33 @@
   <div class="w-200 m-auto">
     <h1 class="h3 mb-3 fw-normal">Groups</h1>
 
-    <div class="text-right" style="margin-bottom: 40px">
-      <%= link_to "Create new group", new_group_path, class: "w-100 btn btn-lg btn-primary" %>
+    <!-- Button trigger modal -->
+    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+      Create new group
+    </button>
+
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">group create form</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <%= form_with(model: @group) do |f| %>
+            <div class="modal-body">
+              <%= render "shared/error_messages", object: f.object %>
+
+              <%= f.label :name %>
+              <%= f.text_field :name, class: "form-control" %>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+              <%= f.submit "Create new Group", class: "btn btn-primary" %>
+            </div>
+          <% end %>
+        </div>
+      </div>
     </div>
 
     <table class="table">
