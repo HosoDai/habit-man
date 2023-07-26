@@ -26,11 +26,11 @@
             <div class="modal-body">
               <%= render "shared/error_messages", object: f.object %>
 
-              <%= f.label :attendance_status %>
-              <%= f.select :attendance_status, Memo.attendance_statuses.keys.to_a, {}, class: "form-control" %>
+              <%= f.label :title %>
+              <%= f.text_field :title, class: "form-control" %>
 
               <%= f.label :description %>
-              <%= f.text_field :description, class: "form-control" %>
+              <%= f.text_area :description, class: "form-control" %>
 
               <%= f.hidden_field :memo_date, :value => @date, class: "form-control" %>
             </div>
@@ -56,7 +56,7 @@
       <tbody>
         <% @memos.each do |memo| %>
           <tr>
-            <td>#</td>
+            <td><%= memo.title %></td>
             <td><%= memo.description %></td>
             <td><%= memo.user.name %></td>
           </tr>
