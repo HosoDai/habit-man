@@ -7,6 +7,9 @@
   </div>
   <div class="col-md-10" style="padding-top: 20px">
 
+  <%= form_with(model: [@group, @memo]) do |f| %>
+    <%= render "shared/error_messages", object: f.object %>
+
     <!-- Modal -->
     <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
       <div class="modal-dialog">
@@ -15,9 +18,8 @@
             <h5 class="modal-title" id="exampleModalLabel">memo create form</h5>
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
           </div>
-          <%= form_with(model: [@group, @memo]) do |f| %>
+
             <div class="modal-body">
-              <%= render "shared/error_messages", object: f.object %>
 
               <%= f.label :title %>
               <%= f.text_field :title, class: "form-control" %>
@@ -31,10 +33,11 @@
               <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
               <%= f.submit "Submit", class: "btn btn-primary" %>
             </div>
-          <% end %>
+
         </div>
       </div>
     </div>
+  <% end %>
 
 
     <div class="d-flex">
