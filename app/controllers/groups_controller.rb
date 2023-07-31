@@ -1,5 +1,6 @@
 class GroupsController < ApplicationController
   before_action :group_member, only: [:show]
+  before_action :correct_group_owner, only: [:edit, :update]
 
   def index
     @groups = current_user.groups
@@ -25,6 +26,18 @@ class GroupsController < ApplicationController
       redirect_to @group
     else
       render "index", status: :unprocessable_entity
+    end
+  end
+
+  def edit
+  end
+
+  def update
+    if @group.update(group_params)
+      flash[:success] = "Group infromation updated"
+      redirect_to @group
+    else
+      render "edit", status: :unprocessable_entity
     end
   end
 
@@ -72,5 +85,10 @@ class GroupsController < ApplicationController
     def group_member
       @group = Group.find(params[:id])
       redirect_to(root_url, status: :see_other) unless @group.users.include?(current_user)
+    end
+
+    def correct_group_owner
+      @group = Group.find(params[:id])
+      redirect_to(root_url, status: :see_other) unless @group.owner_id == current_user.id
     end
 end

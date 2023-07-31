@@ -1,4 +1,4 @@
-<div class="border-end bg-white" id="sidebar-wrapper">
+<div class="border-end bg-white vh-100" id="sidebar-wrapper">
   <div class="sidebar-heading border-bottom bg-light"><%= @group.name %></div>
   <div class="list-group list-group-flush">
       <%= link_to @group, class: "list-group-item list-group-item-action list-group-item-light p-3" do %>
@@ -9,7 +9,7 @@
         <i class="fa-solid fa-users"></i>
         Members
       <% end %>
-      <%= link_to "#", class: "list-group-item list-group-item-action list-group-item-light p-3" do %>
+      <%= link_to edit_group_path(@group), class: "list-group-item list-group-item-action list-group-item-light p-3" do %>
         <i class="fa-solid fa-gear"></i>
         Settings
       <% end %>
