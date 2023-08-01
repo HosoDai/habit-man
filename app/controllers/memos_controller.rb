@@ -20,6 +20,7 @@ class MemosController < ApplicationController
 
   def show
     @memo = Memo.find(params[:id])
+    @group = Group.find(params[:group_id])
   end
 
   def index

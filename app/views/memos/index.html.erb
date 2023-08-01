@@ -60,7 +60,7 @@
       <tbody>
         <% @memos.each do |memo| %>
           <tr>
-            <td><%= memo.title %></td>
+            <td><%= link_to memo.title, group_memo_path(@group, memo) %></td>
             <td><%= memo.description %></td>
             <td><%= memo.user.name %></td>
           </tr>
