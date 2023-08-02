@@ -47,7 +47,9 @@
       <tbody>
         <% @groups.each do |group| %>
           <tr>
-            <td>#</td>
+            <td>
+              <%= image_tag group.image.url, size: "50x50" %>
+            </td>
             <td><%= link_to group.name, group_path(group.id) %></td>
             <td><%= User.find_by(id: group.owner_id).name %></td>
             <td><%= group.users.count %></td>

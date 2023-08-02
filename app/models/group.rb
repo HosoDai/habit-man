@@ -6,4 +6,7 @@ class Group < ApplicationRecord
 
   # バリデーションを記述
   validates :name, presence: true, length: { maximum: 50 }
+
+  # uploaderを読み込ませる
+  mount_uploader :image, ImageUploader
 end

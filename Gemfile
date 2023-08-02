@@ -2,6 +2,8 @@ source "https://rubygems.org"
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 gem "rails",           "7.0.4"
+gem "mini_magick",     "4.12.0"
+gem "carrierwave",     "3.0.0"
 gem "bootstrap",       "5.2.3"
 gem "font-awesome-sass", "6.4.0"
 gem "simple_calendar", "2.4.3"
