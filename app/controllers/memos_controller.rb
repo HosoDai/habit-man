@@ -1,5 +1,6 @@
 class MemosController < ApplicationController
   before_action :group_member, only: [:index]
+  before_action :correct_memo_user, only: [:edit, :update]
 
   def create
     @group = Group.find(params[:group_id])
@@ -30,6 +31,18 @@ class MemosController < ApplicationController
     @memo = @group.memos.new
   end
 
+  def edit
+  end
+
+  def update
+    if @memo.update(memo_params)
+      flash[:success] = "memo information updated"
+      redirect_to group_memo_path(@group, @memo)
+    else
+      render "edit", status: :unprocessable_entity
+    end
+  end
+
 
   private
     def memo_params
@@ -39,5 +52,11 @@ class MemosController < ApplicationController
     def group_member
       @group = Group.find(params[:group_id])
       redirect_to(root_url, status: :see_other) unless @group.users.include?(current_user)
+    end
+
+    def correct_memo_user
+      @memo = Memo.find(params[:id])
+      @group = Group.find(params[:group_id])
+      redirect_to(root_url, status: :see_other) unless @memo.user == current_user
     end
 end

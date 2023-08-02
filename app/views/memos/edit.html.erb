@@ -9,7 +9,21 @@
   <div id="page-content-wrapper" class="container-fluid col-md-10">
       <!-- Page content-->
       <div class="container-fluid">
-        memo edit
+        <%= form_with(model: @memo, url: group_memo_path) do |f| %>
+          <%= render "shared/error_messages", object: f.object %>
+
+          <table class="table table-bordered border-success">
+            <tr>
+              <th><%= f.label(:title, "タイトル") %></th>
+              <td><%= f.text_field :title, class: "form-control" %></td>
+            </tr>
+            <tr>
+              <th><%= f.label(:description, "詳細") %></th>
+              <td><%= f.text_area :description, class: "form-control" %></td>
+            </tr>
+          </table>
+          <%= f.submit "Save changes", class: "btn btn-primary" %>
+        <% end %>
       </div>
   </div>
 </div>

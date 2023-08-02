@@ -34,7 +34,7 @@ class GroupsController < ApplicationController
 
   def update
     if @group.update(group_params)
-      flash[:success] = "Group infromation updated"
+      flash[:success] = "Group information updated"
       redirect_to @group
     else
       render "edit", status: :unprocessable_entity
