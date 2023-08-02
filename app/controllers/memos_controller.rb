@@ -1,6 +1,6 @@
 class MemosController < ApplicationController
   before_action :group_member, only: [:index]
-  before_action :correct_memo_user, only: [:edit, :update]
+  before_action :correct_memo_user, only: [:edit, :update, :destroy]
 
   def create
     @group = Group.find(params[:group_id])
@@ -41,6 +41,13 @@ class MemosController < ApplicationController
     else
       render "edit", status: :unprocessable_entity
     end
+  end
+
+  def destroy
+    date = @memo.memo_date
+    @memo.destroy
+    flash[:success] = "memo deleted"
+    redirect_to group_memos_path(@group, memo_date: date), status: :see_other
   end
 
 

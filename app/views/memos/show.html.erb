@@ -24,14 +24,16 @@
           </tr>
         </table>
 
-        <button type="button" class="btn btn-primary">
-          <%= link_to "編集", edit_group_memo_path(@group, @memo), class: "text-light text-decoration-none" %>
-        </button>
-        <button type="button" class="btn btn-danger">
-          <%= link_to "削除", "#", class: "text-light text-decoration-none" %>
-        </button>
+        <% if @memo.user == current_user %>
+          <button type="button" class="btn btn-primary">
+            <%= link_to "編集", edit_group_memo_path(@group, @memo), class: "text-light text-decoration-none" %>
+          </button>
+          <button type="button" class="btn btn-danger">
+            <%= link_to "削除", [@group, @memo], data: { "turbo-method": :delete, turbo_confirm: "Are you sure?" }, class: "text-light text-decoration-none" %>
+          </button>
+        <% end %>
         <button type="button" class="btn btn-secondary">
-          <%= link_to "一覧に戻る", "#", class: "text-light text-decoration-none" %>
+          <%= link_to "一覧に戻る", :back, class: "text-light text-decoration-none" %>
         </button>
       </div>
   </div>
