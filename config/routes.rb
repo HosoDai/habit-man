@@ -5,10 +5,11 @@ Rails.application.routes.draw do
   post "/login", to: "sessions#create"
   delete "/logout", to: "sessions#destroy"
   resources :users
-  resources :groups do
+  resources :groups, except: [:new] do
     resources :memos
     get :join
     post :invite
     get :member
   end
+  resources :account_activations, only: [:edit]
 end
