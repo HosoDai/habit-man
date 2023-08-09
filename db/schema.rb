@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_08_08_010837) do
+ActiveRecord::Schema[7.0].define(version: 2023_08_08_080303) do
   create_table "group_users", force: :cascade do |t|
     t.integer "user_id"
     t.integer "group_id"
@@ -50,6 +50,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_08_010837) do
     t.string "activation_digest"
     t.boolean "activated", default: false
     t.datetime "activated_at"
+    t.string "reset_digest"
+    t.datetime "reset_sent_at"
     t.index ["email"], name: "index_users_on_email", unique: true
   end
 

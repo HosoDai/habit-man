@@ -49,7 +49,8 @@ class GroupsController < ApplicationController
     if @user
       GroupMailer.invite_member(@group, @user).deliver_now
       flash[:success] = "You succeeded in inviting new member!"
-      redirect_to @group
+      # redirect_to @group
+      redirect_back(fallback_location: group_member_path(@group))
     else
       flash.now[:danger] = "Invalid email or Not registered email"
       render "member", status: :unprocessable_entity
