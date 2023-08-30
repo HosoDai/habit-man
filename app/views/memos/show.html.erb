@@ -33,7 +33,7 @@
           </button>
         <% end %>
         <button type="button" class="btn btn-secondary">
-          <%= link_to "一覧に戻る", :back, class: "text-light text-decoration-none" %>
+          <%= link_to "一覧に戻る", group_memos_path(@group, memo_date: @memo.memo_date), class: "text-light text-decoration-none" %>
         </button>
       </div>
   </div>
