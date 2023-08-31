@@ -27,7 +27,7 @@ class MemosController < ApplicationController
   def index
     @group = Group.find(params[:group_id])
     @date = params[:memo_date]
-    @memos = @group.memos.where(memo_date: @date.to_date)
+    @memos = @group.memos.where(memo_date: @date.to_date).order(updated_at: :desc)
     @memo = @group.memos.new
   end
 
@@ -53,7 +53,7 @@ class MemosController < ApplicationController
 
   private
     def memo_params
-      params.require(:memo).permit(:title, :description, :memo_date)
+      params.require(:memo).permit(:title, :description, :memo_date, :tag_list)
     end
 
     def group_member

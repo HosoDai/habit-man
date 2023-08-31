@@ -13,7 +13,10 @@ class GroupsController < ApplicationController
 
   def show
     @group = Group.find(params[:id])
-    @memos = @group.memos
+    @memos = @group.memos.order(updated_at: :desc)
+    if params[:tag_name]
+      @memos = @memos.tagged_with("#{params[:tag_name]}")
+    end
   end
 
   def create
@@ -75,6 +78,11 @@ class GroupsController < ApplicationController
   def member
     @group = Group.find(params[:group_id])
     @members = @group.users
+  end
+
+  def calendar
+    @group = Group.find(params[:group_id])
+    @memos = @group.memos
   end
 
 

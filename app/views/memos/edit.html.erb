@@ -21,6 +21,13 @@
               <th><%= f.label(:description, "詳細") %></th>
               <td><%= f.text_area :description, class: "form-control" %></td>
             </tr>
+            <tr>
+              <th>
+                <%= f.label :tag_list %>
+                <p>Please separate tags with ,</p>
+              </th>
+              <td><%= f.text_field :tag_list, value: @memo.tag_list.join(","), class: "form-control" %></td>
+            </tr>
           </table>
           <%= f.submit "Save changes", class: "btn btn-primary" %>
         <% end %>

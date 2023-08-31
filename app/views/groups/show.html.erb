@@ -9,14 +9,29 @@
   <div id="page-content-wrapper" class="container-fluid col-md-10">
       <!-- Page content-->
       <div class="container-fluid">
-        <%= month_calendar do |date| %>
-          <% # その日のメモの一覧に飛ぶ %>
-          <%= link_to date, group_memos_path(@group, memo_date: date) %><br>
-          <% if @memos.where(memo_date: date).count > 0 %>
-            <%= "show more" %>
-          <% end %>
-        <% end %>
+        <table class="table">
+          <thead>
+            <tr>
+              <th>memo title</th>
+              <th>memo description</th>
+              <th>memo tag</th>
+              <th>memo user</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% @memos.each do |memo| %>
+              <tr>
+                <td><%= link_to memo.title, group_memo_path(@group, memo) %></td>
+                <td><%= memo.description %></td>
+                <td><%= render "memos/tag_list", tag_list: memo.tag_list %></td>
+                <td><%= memo.user.name %></td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
       </div>
   </div>
 </div>
+
+
 

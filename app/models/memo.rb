@@ -7,4 +7,7 @@ class Memo < ApplicationRecord
   validates :title, presence: true
   validates :description, presence: true
 
+  # タグ付け機能
+  acts_as_taggable_on :tags
+
 end
