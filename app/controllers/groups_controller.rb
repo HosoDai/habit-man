@@ -1,6 +1,7 @@
 class GroupsController < ApplicationController
   before_action :group_member, only: [:show]
   before_action :correct_group_owner, only: [:edit, :update]
+  before_action :set_biginning_of_week
 
   def index
     @groups = current_user.groups
@@ -99,5 +100,9 @@ class GroupsController < ApplicationController
     def correct_group_owner
       @group = Group.find(params[:id])
       redirect_to(root_url, status: :see_other) unless @group.owner_id == current_user.id
+    end
+
+    def set_biginning_of_week
+      Date.beginning_of_week = :sunday
     end
 end
