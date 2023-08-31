@@ -22,7 +22,7 @@
             <% @memos.each do |memo| %>
               <tr>
                 <td><%= link_to memo.title, group_memo_path(@group, memo) %></td>
-                <td><%= memo.description %></td>
+                <td style="text-overflow: ellipsis; white-space: nowrap; overflow: hidden; max-width: 0;"><%= memo.description %></td>
                 <td><%= render "memos/tag_list", tag_list: memo.tag_list %></td>
                 <td><%= memo.user.name %></td>
               </tr>
