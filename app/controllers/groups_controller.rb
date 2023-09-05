@@ -16,7 +16,7 @@ class GroupsController < ApplicationController
     @group = Group.find(params[:id])
     @memos = @group.memos.order(updated_at: :desc)
     if params[:tag_name]
-      @memos = @memos.tagged_with("#{params[:tag_name]}")
+      @memos = @memos.tagged_with(params[:tag_name])
     end
   end
 
