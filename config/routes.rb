@@ -8,7 +8,9 @@ Rails.application.routes.draw do
   delete "/logout", to: "sessions#destroy"
   resources :users
   resources :groups, except: [:new] do
-    resources :memos
+    resources :memos do
+      get :download
+    end
     get :join
     post :invite
     get :member

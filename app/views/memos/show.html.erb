@@ -19,6 +19,14 @@
             <td><%= @memo.description %></td>
           </tr>
           <tr>
+            <th>ファイル</th>
+            <td>
+              <% unless @memo.memo_file.blank? %>
+                <%= link_to @memo.memo_file.identifier, group_memo_download_path(@group, @memo) %>
+              <% end %>
+            </td>
+          </tr>
+          <tr>
             <th>ユーザー</th>
             <td><%= @memo.user.name %> <%= gravatar_for @memo.user %></td>
           </tr>

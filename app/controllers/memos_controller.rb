@@ -50,10 +50,18 @@ class MemosController < ApplicationController
     redirect_to group_memos_path(@group, memo_date: date), status: :see_other
   end
 
+  def download
+    file = Memo.find(params[:memo_id]).memo_file
+    unless file.blank?
+      file_path = file.current_path
+      send_file(file_path)
+    end
+  end
+
 
   private
     def memo_params
-      params.require(:memo).permit(:title, :description, :memo_date, :tag_list)
+      params.require(:memo).permit(:title, :description, :memo_date, :tag_list, :memo_file)
     end
 
     def group_member

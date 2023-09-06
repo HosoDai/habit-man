@@ -27,6 +27,9 @@
               <%= f.label :description %>
               <%= f.text_area :description, class: "form-control" %>
 
+              <%= f.label :file %>
+              <%= f.file_field :memo_file, class: "form-control" %>
+
               <%= f.hidden_field :memo_date, :value => @date, class: "form-control" %>
 
               <%= f.label :tag_list %>

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_08_30_232540) do
+ActiveRecord::Schema[7.0].define(version: 2023_09_06_002107) do
   create_table "group_users", force: :cascade do |t|
     t.integer "user_id"
     t.integer "group_id"
@@ -36,6 +36,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_30_232540) do
     t.datetime "updated_at", null: false
     t.date "memo_date"
     t.string "title"
+    t.string "memo_file"
     t.index ["group_id"], name: "index_memos_on_group_id"
     t.index ["user_id"], name: "index_memos_on_user_id"
   end
