@@ -14,9 +14,9 @@ class GroupsController < ApplicationController
 
   def show
     @group = Group.find(params[:id])
-    @memos = @group.memos.order(updated_at: :desc)
+    @pagy, @memos = pagy(@group.memos.order(updated_at: :desc))
     if params[:tag_name]
-      @memos = @memos.tagged_with(params[:tag_name])
+      @pagy, @memos = pagy(@memos.tagged_with(params[:tag_name]))
     end
   end
 

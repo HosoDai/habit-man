@@ -27,7 +27,7 @@ class MemosController < ApplicationController
   def index
     @group = Group.find(params[:group_id])
     @date = params[:memo_date]
-    @memos = @group.memos.where(memo_date: @date.to_date).order(updated_at: :desc)
+    @pagy, @memos = pagy(@group.memos.where(memo_date: @date.to_date).order(updated_at: :desc))
     @memo = @group.memos.new
   end
 
