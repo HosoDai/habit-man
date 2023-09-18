@@ -5,7 +5,6 @@ class Memo < ApplicationRecord
 
   # バリデーションを記述
   validates :title, presence: true
-  validates :description, presence: true
 
   # タグ付け機能
   acts_as_taggable_on :tags

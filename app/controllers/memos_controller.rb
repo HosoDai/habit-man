@@ -9,7 +9,7 @@ class MemosController < ApplicationController
     @memo.group_id = @group.id
     # あとでmemo_dateを保存する記述を追加
     @memo.memo_date = params[:memo][:memo_date].to_date
-    @memos = @group.memos.where(memo_date: params[:memo][:memo_date].to_date)
+    @pagy, @memos = pagy(@group.memos.where(memo_date: params[:memo][:memo_date].to_date).order(updated_at: :desc))
     if @memo.save
       flash[:success] = "You succeeded in creating new memo!"
       # redirect_to group_memo_path(@group, @memo)
