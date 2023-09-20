@@ -9,7 +9,7 @@
   <div id="page-content-wrapper" class="container-fluid col-md-10">
       <!-- Page content-->
       <div class="container-fluid">
-        <%= month_calendar do |date| %>
+        <%= week_calendar(number_of_weeks: 2) do |date| %>
           <% # その日のメモの一覧に飛ぶ %>
           <%= link_to date, group_memos_path(@group, memo_date: date) %><br>
           <% if @memos.where(memo_date: date).count > 0 %>
