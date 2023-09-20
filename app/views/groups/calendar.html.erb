@@ -13,7 +13,7 @@
           <% # その日のメモの一覧に飛ぶ %>
           <%= link_to date, group_memos_path(@group, memo_date: date) %><br>
           <% if @memos.where(memo_date: date).count > 0 %>
-            <%= "show more" %>
+            <%=  @memos.where(memo_date: date).count %> subject
           <% end %>
         <% end %>
       </div>
