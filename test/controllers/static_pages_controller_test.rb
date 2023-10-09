@@ -3,7 +3,7 @@ require "test_helper"
 class StaticPagesControllerTest < ActionDispatch::IntegrationTest
 
   def setup
-    @base_title = "Member Management App"
+    @base_title = "Habit man"
   end
 
   test "should get root" do
