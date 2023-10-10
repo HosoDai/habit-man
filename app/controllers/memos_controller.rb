@@ -12,6 +12,9 @@ class MemosController < ApplicationController
     @memo.memo_date = params[:memo][:memo_date].to_date
     @pagy, @memos = pagy(@group.memos.where(memo_date: params[:memo][:memo_date].to_date))
     if @memo.save
+      # グループメンバーにメールで通知をする
+      NotificationMailer.notification_for_member(@memo, @group).deliver_now
+      # フラッシュメッセージ
       flash[:success] = "You succeeded in creating new memo!"
       # redirect_to group_memo_path(@group, @memo)
       redirect_back(fallback_location: group_memos_path(@group))
