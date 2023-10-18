@@ -13,10 +13,10 @@ class MemosController < ApplicationController
     @pagy, @memos = pagy(@group.memos.where(memo_date: params[:memo][:memo_date].to_date))
     # p test_success
     # p create_tag(@memo.title, @memo.description)
-    tag_list = create_tag(@memo.title, @memo.description)
-    tag_list.each do |tag, count|
-      @memo.tag_list << tag
-    end
+    # tag_list = create_tag(@memo.title, @memo.description)
+    # tag_list.each do |tag, count|
+    #   @memo.tag_list << tag
+    # end
     if @memo.save
       # グループメンバーにメールで通知をする
       NotificationMailer.notification_for_member(@memo, @group).deliver_now
