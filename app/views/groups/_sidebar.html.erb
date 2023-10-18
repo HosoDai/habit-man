@@ -1,24 +1,47 @@
-<div class="border-end bg-white" id="sidebar-wrapper">
-  <div class="sidebar-heading border-bottom bg-light">
-    <%= image_tag @group.image_url, size: "50x50" %>
-    <%= @group.name %>
+<div class="boxAsideSection">
+  <!-- タイムライン -->
+  <div class="separation timeline">
+    <%= link_to @group, class: "text-decoration-none" do %>
+      <div class="content-header link active">
+        <h6 class="heading">
+          <i class="fa-solid fa-timeline" style="margin-right: 8px;"></i>
+          <span class="heading-name">タイムライン</span>
+        </h6>
+      </div>
+    <% end %>
   </div>
-  <div class="list-group list-group-flush">
-      <%= link_to @group, class: "list-group-item list-group-item-action list-group-item-light p-3" do %>
-        <i class="fa-solid fa-house"></i>
-        Home
-      <% end %>
-      <%= link_to group_calendar_path(@group), class: "list-group-item list-group-item-action list-group-item-light p-3" do %>
-        <i class="fa-regular fa-calendar-days"></i>
-        Calendar
-      <% end %>
-      <%= link_to group_member_path(@group), class: "list-group-item list-group-item-action list-group-item-light p-3" do %>
-        <i class="fa-solid fa-users"></i>
-        Members
-      <% end %>
-      <%= link_to edit_group_path(@group), class: "list-group-item list-group-item-action list-group-item-light p-3" do %>
-        <i class="fa-solid fa-gear"></i>
-        Settings
-      <% end %>
+
+  <!-- サイトから -->
+  <div class="separation fromsite">
+    <div class="content-header collapsable">
+      <h6 class="heading">
+        <i class="fa-solid fa-bullhorn" style="margin-right: 8px;"></i>
+        <span class="heading-name">サイトから</span>
+      </h6>
+    </div>
+    <div class="content">
+      <ul class="menu">
+        <li class="inactive">
+          <%= link_to group_calendar_path(@group), class: "menu-item text-decoration-none text-black" do %>
+            <span class="text">カレンダー</span>
+          <% end %>
+        </li>
+        <li class="inactive">
+          <%= link_to group_member_path(@group), class: "menu-item text-decoration-none text-black" do %>
+            <span class="text">メンバー</span>
+          <% end %>
+        </li>
+        <li class="inactive">
+          <% if @group.owner_id == current_user.id %>
+            <%= link_to edit_group_path(@group), class: "menu-item text-decoration-none text-black" do %>
+              <span class="text">グループ設定</span>
+            <% end %>
+          <% end %>
+        </li>
+      </ul>
+    </div>
   </div>
 </div>
+
+
+

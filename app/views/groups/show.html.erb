@@ -1,38 +1,41 @@
 <% provide(:title, @group.name) %>
 
-<div class="row" id="wrapper">
+<div id="groupContainer" class="groupPage" style="margin-top: 51px;">
   <!-- Sidebar -->
-  <div class="col-md-2">
+  <div id="groupAside">
     <%= render "groups/sidebar" %>
   </div>
-  <!-- Page content wrapper-->
-  <div id="page-content-wrapper" class="container-fluid col-md-10">
-      <!-- Page content-->
-      <div class="container-fluid">
-        <!-- tag search form -->
-        <%= render "layouts/tag_search" %>
-        <table class="table">
-          <thead>
-            <tr>
-              <th>memo title</th>
-              <th>memo description</th>
-              <th>memo tag</th>
-              <th>memo user</th>
-            </tr>
-          </thead>
-          <tbody>
-            <% @memos.each do |memo| %>
+
+  <div class="row" id="wrapper">
+    <!-- Page content wrapper-->
+    <div id="page-content-wrapper" class="container-fluid col-md-10">
+        <!-- Page content-->
+        <div class="container-fluid">
+          <!-- tag search form -->
+          <%= render "layouts/tag_search" %>
+          <table class="table">
+            <thead>
               <tr>
-                <td><%= link_to memo.title, group_memo_path(@group, memo) %></td>
-                <td style="text-overflow: ellipsis; white-space: nowrap; overflow: hidden; max-width: 0;"><%= memo.description %></td>
-                <td><%= render "memos/tag_list", tag_list: memo.tag_list %></td>
-                <td><%= memo.user.name %></td>
+                <th>memo title</th>
+                <th>memo description</th>
+                <th>memo tag</th>
+                <th>memo user</th>
               </tr>
-            <% end %>
-          </tbody>
-        </table>
-        <%== pagy_bootstrap_nav(@pagy) if @pagy.pages > 1 %>
-      </div>
+            </thead>
+            <tbody>
+              <% @memos.each do |memo| %>
+                <tr>
+                  <td><%= link_to memo.title, group_memo_path(@group, memo) %></td>
+                  <td style="text-overflow: ellipsis; white-space: nowrap; overflow: hidden; max-width: 0;"><%= memo.description %></td>
+                  <td><%= render "memos/tag_list", tag_list: memo.tag_list %></td>
+                  <td><%= memo.user.name %></td>
+                </tr>
+              <% end %>
+            </tbody>
+          </table>
+          <%== pagy_bootstrap_nav(@pagy) if @pagy.pages > 1 %>
+        </div>
+    </div>
   </div>
 </div>
 
