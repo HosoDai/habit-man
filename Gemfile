@@ -2,6 +2,8 @@ source "https://rubygems.org"
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 gem "rails",           "7.0.4"
+gem "natto",           "1.2.0"
+gem "pycall",          "1.5.1"
 gem "pagy",            "6.0.4"
 gem "acts-as-taggable-on",  "9.0.1"
 gem "carrierwave",     "3.0.0"

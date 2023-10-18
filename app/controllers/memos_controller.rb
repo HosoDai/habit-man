@@ -11,6 +11,12 @@ class MemosController < ApplicationController
     # あとでmemo_dateを保存する記述を追加
     @memo.memo_date = params[:memo][:memo_date].to_date
     @pagy, @memos = pagy(@group.memos.where(memo_date: params[:memo][:memo_date].to_date))
+    # p test_success
+    # p create_tag(@memo.title, @memo.description)
+    tag_list = create_tag(@memo.title, @memo.description)
+    tag_list.each do |tag, count|
+      @memo.tag_list << tag
+    end
     if @memo.save
       # グループメンバーにメールで通知をする
       NotificationMailer.notification_for_member(@memo, @group).deliver_now
@@ -78,4 +84,8 @@ class MemosController < ApplicationController
       @group = Group.find(params[:group_id])
       redirect_to(root_url, status: :see_other) unless @memo.user == current_user
     end
+
+    # def automatic_tagging
+
+    # end
 end
