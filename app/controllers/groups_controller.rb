@@ -14,9 +14,9 @@ class GroupsController < ApplicationController
 
   def show
     @group = Group.find(params[:id])
-    @pagy, @memos = pagy(@group.memos.order(updated_at: :desc))
+    @pagy, @memos = pagy(@group.memos.order(updated_at: :desc).limit(30))
     if params[:tag_name]
-      @pagy, @memos = pagy(@memos.tagged_with(params[:tag_name]))
+      @pagy, @memos = pagy(@memos.tagged_with(params[:tag_name]).limit(20))
     end
   end
 

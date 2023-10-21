@@ -1,5 +1,4 @@
 <% tag_list.each do |tag| %>
-  <div class="btn btn-primary">
-    <%= link_to tag, group_path(@group, tag_name: tag), class: "text-white" %>
-  </div>
+  <i class="fa-solid fa-tag"></i>
+  <%= link_to tag, group_path(@group, tag_name: tag), class: "text-decoration-none" %>
 <% end %>

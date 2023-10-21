@@ -6,35 +6,45 @@
     <%= render "groups/sidebar" %>
   </div>
 
-  <div class="row" id="wrapper">
-    <!-- Page content wrapper-->
-    <div id="page-content-wrapper" class="container-fluid col-md-10">
-        <!-- Page content-->
-        <div class="container-fluid">
-          <!-- tag search form -->
-          <%= render "layouts/tag_search" %>
-          <table class="table">
-            <thead>
-              <tr>
-                <th>memo title</th>
-                <th>memo description</th>
-                <th>memo tag</th>
-                <th>memo user</th>
-              </tr>
-            </thead>
-            <tbody>
-              <% @memos.each do |memo| %>
-                <tr>
-                  <td><%= link_to memo.title, group_memo_path(@group, memo) %></td>
-                  <td style="text-overflow: ellipsis; white-space: nowrap; overflow: hidden; max-width: 0;"><%= memo.description %></td>
-                  <td><%= render "memos/tag_list", tag_list: memo.tag_list %></td>
-                  <td><%= memo.user.name %></td>
-                </tr>
-              <% end %>
-            </tbody>
-          </table>
-          <%== pagy_bootstrap_nav(@pagy) if @pagy.pages > 1 %>
+  <!-- Main -->
+  <div id="main" class="groupPage" style="padding-left: 320px;">
+    <div class="unitContent">
+      <div class="tag-search-form">
+        <%= render "layouts/tag_search" %>
+      </div>
+      <% @memos.each do |memo| %>
+        <div class="content">
+          <div class="boxBalloon">
+            <div class="feedSection">
+              <div class="header">
+                <div class="left-content">
+                  <div class="user-icon">
+                    <%= gravatar_for memo.user %>
+                  </div>
+                  <div class="feed-info">
+                    <div>
+                      <b><%= memo.user.name %></b>
+                    </div>
+                    <div class="feed-date">
+                      <%= memo.created_at.strftime('%Y/%m/%d %H:%M') %>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="body">
+                <b><%= memo.title %></b><br>
+                <p style="text-overflow: ellipsis; white-space: nowrap; overflow: hidden;"><%= memo.description %></p>
+              </div>
+            </div>
+            <div class="boxFeedFooter">
+              <div class="tag-list">
+                <%= render "memos/tag_list", tag_list: memo.tag_list %>
+              </div>
+            </div>
+          </div>
         </div>
+      <% end %>
+      <%== pagy_bootstrap_nav(@pagy) if @pagy.pages > 1 %>
     </div>
   </div>
 </div>
