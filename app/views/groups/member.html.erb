@@ -17,24 +17,34 @@
       <div class="member_invite_form" style="margin-bottom: 30px;">
         <%= render "groups/member_invite_modal" %>
       </div>
-      <div class="card-group">
-        <% @members.each do |member| %>
-          <div class="card" style="width: 200px; height: 330px;">
-            <%= gravatar_for member %>
-            <div class="card-body">
-              <h5 class="card-title"><%= member.name %></h5>
-              <p class="card-text">
+      <div class="boxMemberFilter">
+        <div class="user_type">
+          <p class="user_type_name">ユーザー種別</p>
+        </div>
+        <div class="type_owner">
+          <i class="fa-solid fa-user" style="color: blue;"></i> オーナー
+        </div>
+        <div class="type_member">
+          <i class="fa-solid fa-user" style="color: green;"></i> メンバー
+        </div>
+      </div>
+      <div class="boxMemberList">
+        <ul class="listContainer">
+          <% @members.each do |member| %>
+            <li>
+              <p class="profile"><%= gravatar_for member %></p>
+              <p class="name">
                 <% if @group.owner_id == member.id %>
                   <i class="fa-solid fa-user" style="color: blue;"></i>
-                  owner
+                  <%= member.name %>
                 <% else %>
                   <i class="fa-solid fa-user" style="color: green;"></i>
-                  member
+                  <%= member.name %>
                 <% end %>
               </p>
-            </div>
-          </div>
-        <% end %>
+            </li>
+          <% end %>
+        </ul>
       </div>
     </div>
   </div>
