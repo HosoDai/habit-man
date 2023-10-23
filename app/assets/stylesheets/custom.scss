@@ -142,6 +142,31 @@ a, span, p, div, table, th, td {
       width: 790px;
     }
   }
+  .headingMembers {
+    background-color: #fff;
+    border: 1px solid #e4e4e4;
+    margin-bottom: 30px;
+    padding: 25px 30px;
+    position: relative;
+    border-radius: 8px;
+    color: #4387ed;
+    font-size: 18px;
+    width: 790px;
+    .groupMain {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      .heading {
+        color: #272b32;
+        font-weight: bold;
+      }
+    }
+  }
+  .member_invite_form {
+    margin-bottom: 30px;
+    position: relative;
+    left: 650px;
+  }
 }
 
 

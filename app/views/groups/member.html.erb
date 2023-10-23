@@ -1,71 +1,41 @@
 <% provide(:title, "members") %>
 
-<div class="row">
+<div id="groupContainer" class="groupPage" style="margin-top: 51px;">
   <!-- Sidebar -->
-  <div class="col-md-2">
+  <div id="groupAside">
     <%= render "groups/sidebar" %>
   </div>
 
-  <!-- Page content -->
-  <div class="col-md-10" style="padding-top: 20px">
-    <!-- Modal -->
-    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-      <div class="modal-dialog">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLabel">Inviting member form</h5>
-            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-          </div>
-          <%= form_with(url: group_invite_path(@group), scope: :group) do |f| %>
-            <div class="modal-body">
-              <%= f.label :email %>
-              <%= f.email_field :email, class: "form-control" %>
-            </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-              <%= f.submit "Invite User", class: "btn btn-primary" %>
-            </div>
-          <% end %>
-        </div>
+  <!-- Main -->
+  <div id="main" class="groupPage" style="padding-left: 320px;">
+    <div class="headingMembers">
+      <div class="groupMain">
+        <h2 class="heading">Members</h2>
       </div>
     </div>
-
-    <div class="d-flex">
-      <h1 class="h3 mb-3 fw-normal">Members</h1>
-      <!-- Button trigger modal -->
-      <% if current_user.id == @group.owner_id %>
-        <button type="button" class="btn btn-primary ms-auto" data-bs-toggle="modal" data-bs-target="#exampleModal">
-          Invite Member
-        </button>
+    <div class="unitContent">
+      <div class="member_invite_form" style="margin-bottom: 30px;">
+        <%= render "groups/member_invite_modal" %>
+      </div>
+      <% @members.each do |member| %>
+        <div class="card" style="width: 200px; height: 280px;">
+          <%= gravatar_for member %>
+          <div class="card-body">
+            <h5 class="card-title"><%= member.name %></h5>
+            <p class="card-text">
+              <% if @group.owner_id == member.id %>
+                <i class="fa-solid fa-user" style="color: blue;"></i>
+                owner
+              <% else %>
+                <i class="fa-solid fa-user" style="color: green;"></i>
+                member
+              <% end %>
+            </p>
+          </div>
+        </div>
       <% end %>
     </div>
-
-    <!-- member table -->
-    <table class="table">
-      <thead>
-        <tr>
-          <th>member image</th>
-          <th>member name</th>
-          <th>member status</th>
-        </tr>
-      </thead>
-      <tbody>
-        <% @members.each do |member| %>
-          <tr>
-            <td><%= gravatar_for member %></td>
-            <td><%= member.name %></td>
-            <td>
-              <% if member.id != @group.owner_id %>
-                member
-              <% else %>
-                owner
-              <% end %>
-            </td>
-          </tr>
-        <% end %>
-      </tbody>
-    </table>
-
   </div>
 </div>
+
 
