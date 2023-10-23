@@ -17,23 +17,25 @@
       <div class="member_invite_form" style="margin-bottom: 30px;">
         <%= render "groups/member_invite_modal" %>
       </div>
-      <% @members.each do |member| %>
-        <div class="card" style="width: 200px; height: 280px;">
-          <%= gravatar_for member %>
-          <div class="card-body">
-            <h5 class="card-title"><%= member.name %></h5>
-            <p class="card-text">
-              <% if @group.owner_id == member.id %>
-                <i class="fa-solid fa-user" style="color: blue;"></i>
-                owner
-              <% else %>
-                <i class="fa-solid fa-user" style="color: green;"></i>
-                member
-              <% end %>
-            </p>
+      <div class="card-group">
+        <% @members.each do |member| %>
+          <div class="card" style="width: 200px; height: 330px;">
+            <%= gravatar_for member %>
+            <div class="card-body">
+              <h5 class="card-title"><%= member.name %></h5>
+              <p class="card-text">
+                <% if @group.owner_id == member.id %>
+                  <i class="fa-solid fa-user" style="color: blue;"></i>
+                  owner
+                <% else %>
+                  <i class="fa-solid fa-user" style="color: green;"></i>
+                  member
+                <% end %>
+              </p>
+            </div>
           </div>
-        </div>
-      <% end %>
+        <% end %>
+      </div>
     </div>
   </div>
 </div>
