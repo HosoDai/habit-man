@@ -1,51 +1,35 @@
 <% provide(:title, "group edit") %>
 
-<div class="row" id="wrapper">
+<div id="groupContainer" class="groupPage" style="margin-top: 51px;">
   <!-- Sidebar -->
-  <div class="col-md-2">
+  <div id="groupAside">
     <%= render "groups/sidebar" %>
   </div>
-  <!-- Page content wrapper-->
-  <div id="page-content-wrapper" class="container-fluid col-md-10" style="background-color: #2779e2;">
-      <!-- Page content-->
-      <div class="container-fluid">
-        <h1 class="text-white mb-4">Update group profile</h1>
 
-        <div class="card" style="border-radius: 15px;">
-          <div class="card-body">
-
-            <%= form_with(model: @group) do |f| %>
-              <%= render "shared/error_messages", object: f.object %>
-
-              <div class="row align-items-center pt-4 pb-3">
-                <div class="col-md-3 ps-5">
-                  <%= f.label(:name, "group name", class: "mb-0") %>
-                </div>
-                <div class="col-md-9 pe-5">
-                  <%= f.text_field :name, class: "form-control form-control-lg" %>
-                </div>
-              </div>
-
-              <hr class="mx-n3">
-
-              <div class="row align-items-center pt-4 pb-3">
-                <div class="col-md-3 ps-5">
-                  <%= f.label(:image, "group image", class: "mb-0") %>
-                </div>
-                <div class="col-md-9 pe-5">
-                  <%= f.file_field :image, class: "form-control form-control-lg", accept: "image/*" %>
-                </div>
-              </div>
-
-              <hr class="mx-n3">
-
-              <div class="px-5 py-4">
-                <%= f.submit "Save changes", class: "btn btn-primary btn-lg" %>
-              </div>
-            <% end %>
-
+  <!-- Main -->
+  <div id="main" class="groupPage" style="padding-left: 320px;">
+    <div class="headingGroupSettings">
+      <div class="groupMain">
+        <h2 class="heading">Group Settings</h2>
+      </div>
+    </div>
+    <div class="groupSettingForm">
+      <%= form_with(model: @group) do |f| %>
+        <%= render "shared/error_messages", object: f.object %>
+        <div class="settingGroupSection">
+          <p class="groupItemLabel"><%= f.label :name, "グループ名" %></p>
+          <div class="groupNameArea">
+            <%= f.text_field :name, class: "groupNameForm", size: 50 %>
           </div>
         </div>
-      </div>
+        <div class="settingGroupSection">
+          <p class="groupItemLabel"><%= f.label :image, "グループ画像" %></p>
+          <div class="groupImageArea">
+            <%= f.file_field :image, accept: "image/*" %>
+          </div>
+        </div>
+        <%= f.submit "Save changes", class: "btn btn-primary btn-lg mt-2" %>
+      <% end %>
+    </div>
   </div>
 </div>
