@@ -1,47 +1,22 @@
 <% provide(:title, "Group index") %>
 
-<div class="text-center vsc-initialized" style="padding-top: 50px">
-  <div class="w-200 m-auto">
-    <h1 class="h3 mb-3 fw-normal">Groups</h1>
-
-    <%= form_with(model: @group) do |f| %>
-      <%= render "shared/error_messages", object: f.object %>
-
-      <!-- Button trigger modal -->
-      <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
-        Create new group
-      </button>
-
-      <!-- Modal -->
-      <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h5 class="modal-title" id="exampleModalLabel">group create form</h5>
-              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-
-              <div class="modal-body">
-                <%= f.label :name %>
-                <%= f.text_field :name, class: "form-control" %>
-              </div>
-
-              <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                <%= f.submit "Create new Group", class: "btn btn-primary" %>
-              </div>
-          </div>
-        </div>
-      </div>
-    <% end %>
-
+<div id="groupIndex" class="groupPage" style="margin-top: 51px;">
+  <div class="headingGroups">
+    <div class="groupMain">
+      <h2 class="heading">Groups</h2>
+    </div>
+  </div>
+  <div class="groupCreateModal">
+    <%= render "groups/group_create_modal" %>
+  </div>
+  <div class="groupTable">
     <table class="table">
       <thead>
         <tr>
-          <th>group image</th>
-          <th>group name</th>
-          <th>owner</th>
-          <th>member count</th>
+          <th>グループ画像</th>
+          <th>グループ名</th>
+          <th>オーナー</th>
+          <th>メンバー数</th>
         </tr>
       </thead>
       <tbody>

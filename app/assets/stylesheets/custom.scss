@@ -228,4 +228,35 @@ a, span, p, div, table, th, td {
   }
 }
 
+// group index
+#groupIndex {
+  .headingGroups {
+    background-color: #fff;
+    border: 1px solid #e4e4e4;
+    margin-bottom: 30px;
+    padding: 25px 30px;
+    position: relative;
+    border-radius: 8px;
+    font-size: 18px;
+    width: 790px;
+  }
+  .groupCreateModal {
+    margin-bottom: 25px;
+    text-align: center;
+  }
+  .headingGroups {
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .groupTable {
+    th {
+      color: #9b9b9b;
+      font-weight: bold;
+    }
+    th, td {
+      text-align: center;
+    }
+  }
+}
+
 
