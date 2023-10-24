@@ -1,11 +1,19 @@
 <% provide(:title, @user.name) %>
-<div class="row">
-  <aside class="col-md-4">
-    <section class="user_info">
-      <h1>
-        <%= gravatar_for @user %>
-        <%= @user.name %>
-      </h1>
-    </section>
-  </aside>
+
+<!-- Main -->
+<div id="main" class="userProfile" style="margin-top: 51px;">
+  <div class="profileHeader">
+    <div class="profileImage">
+      <%= gravatar_for current_user %>
+    </div>
+    <div class="profileInfo">
+      <p class="profileName"><%= current_user.name %></p>
+      <div class="profileOption">
+        <p class="email"><span>メールアドレス : </span><%= current_user.email %></p>
+      </div>
+    </div>
+  </div>
+  <div class="userContent">
+    <% # 後から追加予定 %>
+  </div>
 </div>

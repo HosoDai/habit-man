@@ -239,14 +239,15 @@ a, span, p, div, table, th, td {
     border-radius: 8px;
     font-size: 18px;
     width: 790px;
+    margin-left: auto;
+    margin-right: auto;
+    .heading {
+      text-align: center;
+    }
   }
   .groupCreateModal {
     margin-bottom: 25px;
     text-align: center;
-  }
-  .headingGroups {
-    margin-left: auto;
-    margin-right: auto;
   }
   .groupTable {
     th {
@@ -260,3 +261,27 @@ a, span, p, div, table, th, td {
 }
 
 
+// user page関連
+.profileHeader {
+
+  border-bottom: 1px solid #ddd;
+  padding: 10px 0 20px 30px;
+  position: relative;
+  display: flex;
+  .profileImage {
+    padding-right: 20px;
+  }
+  .profileName {
+    border-bottom: 1px dotted #ddd;
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 10px;
+    padding-bottom: 5px;
+  }
+  .profileOption {
+    span {
+      color: #9b9b9b;
+      font-weight: bold;
+    }
+  }
+}
