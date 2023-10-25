@@ -18,6 +18,17 @@ a, span, p, div, table, th, td {
   word-break: break-all;
 }
 
+// header
+.navbar {
+  background-color: #F5F5F5;
+  .appTitle {
+    text-decoration: none;
+    font-weight: bold;
+    
+  }
+}
+
+
 // calendar custom
 .simple-calendar {
   .wday-0 {
