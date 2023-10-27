@@ -1,79 +1,57 @@
 <% provide(:title, "Memos index") %>
 
-
-<div class="row">
-  <div class="col-md-2">
+<div id="groupContainer" class="groupPage" style="margin-top: 51px;">
+  <!-- Sidebar -->
+  <div id="groupAside">
     <%= render "groups/sidebar" %>
   </div>
-  <div class="col-md-10" style="padding-top: 20px">
 
-  <%= form_with(model: [@group, @memo]) do |f| %>
-    <%= render "shared/error_messages", object: f.object %>
-
-    <!-- Modal -->
-    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-      <div class="modal-dialog">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLabel">memo create form</h5>
-            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-          </div>
-
-            <div class="modal-body">
-
-              <%= f.label :title %>
-              <%= f.text_field :title, class: "form-control" %>
-
-              <%= f.label :description %>
-              <%= f.text_area :description, class: "form-control" %>
-
-              <%= f.label :file %>
-              <%= f.file_field :memo_file, class: "form-control" %>
-
-              <%= f.hidden_field :memo_date, :value => @date, class: "form-control" %>
-
-              <%= f.label :tag_list %>
-              <p>Please separate tags with ,</p>
-              <%= f.text_field :tag_list, value: @memo.tag_list.join(","), class: "form-control" %>
-            </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-              <%= f.submit "Submit", class: "btn btn-primary" %>
-            </div>
-
+  <!-- Main -->
+  <div id="main" class="groupPage memoIndex" style="padding-left: 320px;">
+    <div class="unitContent">
+      <div class="headingMemos">
+        <div class="memoMain">
+          <h2 class="heading"><b><%= @date %></b> のメモ一覧</h2>
         </div>
       </div>
+      <div class="memoCreateModal">
+        <%= render "memos/memo_create_modal" %>
+      </div>
+      <% @memos.each do |memo| %>
+        <div class="content">
+          <div class="boxBalloon">
+            <div class="feedSection">
+              <div class="header">
+                <div class="left-content">
+                  <div class="user-icon">
+                    <%= gravatar_for memo.user %>
+                  </div>
+                  <div class="feed-info">
+                    <div>
+                      <b><%= memo.user.name %></b>
+                    </div>
+                    <div class="feed-date">
+                      <%= memo.created_at.strftime("%Y/%m/%d %H:%M") %>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="body">
+                <%= link_to group_memo_path(@group, memo), class: "memo-link" do %>
+                  <b><%= memo.title %></b><br>
+                <% end %>
+                <p style="text-overflow: ellipsis; white-space: nowrap; overflow: hidden;"><%= memo.description %></p>
+              </div>
+            </div>
+            <div class="boxFeedFooter">
+              <div class="tag-list">
+                <%= render "memos/tag_list", tag_list: memo.tag_list %>
+              </div>
+            </div>
+          </div>
+        </div>
+      <% end %>
+      <%== pagy_bootstrap_nav(@pagy) if @pagy.pages > 1 %>
     </div>
-  <% end %>
-
-
-    <div class="d-flex">
-      <h1 class="h3 mb-3 fw-normal"><%= @date %> memos</h1>
-      <!-- Button trigger modal -->
-      <button type="button" class="btn btn-primary ms-auto" data-bs-toggle="modal" data-bs-target="#exampleModal">
-        new memo
-      </button>
-    </div>
-
-
-    <table class="table">
-      <thead>
-        <tr>
-          <th>memo title</th>
-          <th>memo description</th>
-          <th>memo user</th>
-        </tr>
-      </thead>
-      <tbody>
-        <% @memos.each do |memo| %>
-          <tr>
-            <td><%= link_to memo.title, group_memo_path(@group, memo) %></td>
-            <td style="text-overflow: ellipsis; white-space: nowrap; overflow: hidden; max-width: 0;"><%= memo.description %></td>
-            <td><%= memo.user.name %></td>
-          </tr>
-        <% end %>
-      </tbody>
-    </table>
-    <%== pagy_bootstrap_nav(@pagy) if @pagy.pages > 1 %>
   </div>
 </div>

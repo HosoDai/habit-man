@@ -26,13 +26,15 @@
                       <b><%= memo.user.name %></b>
                     </div>
                     <div class="feed-date">
-                      <%= memo.created_at.strftime('%Y/%m/%d %H:%M') %>
+                      <%= memo.created_at.strftime("%Y/%m/%d %H:%M") %>
                     </div>
                   </div>
                 </div>
               </div>
               <div class="body">
-                <b><%= memo.title %></b><br>
+                <%= link_to group_memo_path(@group, memo), class: "memo-link" do %>
+                  <b><%= memo.title %></b><br>
+                <% end %>
                 <p style="text-overflow: ellipsis; white-space: nowrap; overflow: hidden;"><%= memo.description %></p>
               </div>
             </div>

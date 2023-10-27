@@ -141,6 +141,13 @@ a, span, p, div, table, th, td {
     }
     .feedSection {
       border-bottom: 2px solid #9b9b9b;
+      .memo-link {
+        text-decoration: none;
+        color: black;
+        &:hover {
+          color: #9b9b9b;
+        }
+      }
     }
     .boxBalloon {
       margin-bottom: 20px;
@@ -335,6 +342,32 @@ a, span, p, div, table, th, td {
         margin-top: 20px;
         margin-left: 5px;
       }
+    }
+  }
+}
+
+
+// memo page関連
+.memoIndex {
+  .heading {
+    background-color: #fff;
+    border: 1px solid #e4e4e4;
+    margin-bottom: 30px;
+    padding: 25px 30px;
+    position: relative;
+    border-radius: 8px;
+    font-size: 18px;
+  }
+  .memoCreateModal {
+    margin-bottom: 25px;
+    position: relative;
+    left: 675px;
+  }
+  .memo-link {
+    text-decoration: none;
+    color: black;
+    &:hover {
+      color: #9b9b9b;
     }
   }
 }
