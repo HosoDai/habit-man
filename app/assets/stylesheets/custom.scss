@@ -24,7 +24,6 @@ a, span, p, div, table, th, td {
   .appTitle {
     text-decoration: none;
     font-weight: bold;
-    
   }
 }
 
@@ -156,7 +155,7 @@ a, span, p, div, table, th, td {
     }
   }
 
-  // group settings
+  // group settings and user profile settings
   .groupSettingForm {
     .settingGroupSection {
       display: flex;
@@ -177,6 +176,7 @@ a, span, p, div, table, th, td {
       }
     }
   }
+
   // group members
   .headingMembers, .headingGroupSettings {
     background-color: #fff;
@@ -293,6 +293,48 @@ a, span, p, div, table, th, td {
     span {
       color: #9b9b9b;
       font-weight: bold;
+    }
+  }
+}
+
+// profile settings
+.profileEdit {
+  margin-top: 51px;
+  width: 790px;
+  margin-left: auto;
+  margin-right: auto;
+  .heading {
+    background-color: #fff;
+    border: 1px solid #e4e4e4;
+    margin-bottom: 30px;
+    padding: 25px 30px;
+    position: relative;
+    border-radius: 8px;
+    font-size: 18px;
+  }
+  .settingProfileSection {
+    display: flex;
+    border-bottom: 1px solid #e4e4e4;
+    margin-bottom: 10px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    .profileItemLabel {
+      color: #a2a2a2;
+      font-weight: bold;
+      margin-right: 70px;
+    }
+    .profileNameArea, .profilePasswordArea {
+      margin-left: 30px;
+    }
+    .Form {
+      border: 1px solid #e4e4e4;
+    }
+    .profileImageArea {
+      margin-left: -15px;
+      .profile_change_link {
+        margin-top: 20px;
+        margin-left: 5px;
+      }
     }
   }
 }

@@ -1,73 +1,46 @@
-<section class="vh-100" style="background-color: #2779e2;">
-  <div class="container h-100">
-    <div class="row d-flex justify-content-center align-items-center h-100">
-      <div class="col-xl-9">
+<% provide(:title, "profile edit") %>
 
-        <h1 class="text-white mb-4">Update your profile</h1>
-
-        <div class="card" style="border-radius: 15px;">
-          <div class="card-body">
-
-            <%= form_with(model: @user) do |f| %>
-              <%= render "shared/error_messages", object: f.object %>
-
-              <div class="row align-items-center pt-4 pb-3">
-                <div class="col-md-3 ps-5">
-                  <%= f.label(:name, "Your name", class: "mb-0") %>
-                </div>
-                <div class="col-md-9 pe-5">
-                  <%= f.text_field :name, class: "form-control form-control-lg" %>
-                </div>
-              </div>
-
-              <hr class="mx-n3">
-
-              <div class="row align-items-center py-3">
-                <div class="col-md-3 ps-5">
-                 <%= f.label(:email, "Email address", class: "mb-0") %>
-                </div>
-                <div class="col-md-9 pe-5">
-                  <%= f.email_field :email, class: "form-control form-control-lg" %>
-                </div>
-              </div>
-
-              <hr class="mx-n3">
-
-              <div class="row align-items-center py-3">
-                <div class="col-md-3 ps-5">
-                  <%= f.label(:password, "Password", class: "mb-0") %>
-                </div>
-                <div class="col-md-9 pe-5">
-                  <%= f.password_field :password, class: "form-control form-control-lg" %>
-                </div>
-              </div>
-
-              <hr class="mx-n3">
-
-              <div class="row align-items-center py-3">
-                <div class="col-md-3 ps-5">
-                  <%= f.label(:password_confirmation, "Repeat your password", class: "mb-0") %>
-                </div>
-                <div class="col-md-9 pe-5">
-                  <%= f.password_field :password_confirmation, class: "form-control form-control-lg" %>
-                </div>
-              </div>
-
-              <hr class="mx-n3">
-
-              <div class="px-5 py-4">
-                <%= f.submit "Save changes", class: "btn btn-primary btn-lg" %>
-              </div>
-            <% end %>
-
-            <div class="gravatar_edit">
-              <%= gravatar_for @user %>
-              <a href="https://gravatar.com/emails" target="_blank" rel="noopener">change</a>
-            </div>
-          </div>
-        </div>
-
-      </div>
+<div id="main" class="profileEdit">
+  <div class="headingProfileSettings">
+    <div class="profileMain">
+      <h2 class="heading">Profile Settings</h2>
     </div>
   </div>
-</section>
+  <div class="profileSettingForm">
+    <%= form_with(model: @user) do |f| %>
+      <%= render "shared/error_messages", object: f.object %>
+      <div class="settingProfileSection">
+        <p class="profileItemLabel"><%= f.label :name, "ユーザー名" %></p>
+        <div class="profileNameArea">
+          <%= f.text_field :name, class: "profileNameForm Form", size: 50 %>
+        </div>
+      </div>
+      <div class="settingProfileSection">
+        <p class="profileItemLabel"><%= f.label :email, "メールアドレス" %></p>
+        <div class="profileEmailArea">
+          <%= f.email_field :email, class: "profileEmailForm Form", size: 50 %>
+        </div>
+      </div>
+      <div class="settingProfileSection">
+        <p class="profileItemLabel"><%= f.label :password, "パスワード" %></p>
+        <div class="profilePasswordArea">
+          <%= f.password_field :password, class: "profilePasswordForm Form", size: 50 %>
+        </div>
+      </div>
+      <div class="settingProfileSection">
+        <p class="profileItemLabel"><%= f.label :password_confirmation, "パスワード確認" %></p>
+        <div class="profilePasswordConfirmationArea">
+          <%= f.password_field :password_confirmation, class: "profilePasswordConfirmationForm Form", size: 50 %>
+        </div>
+      </div>
+      <div class="settingProfileSection">
+        <p class="profileItemLabel">プロフィール画像</p>
+        <div class="profileImageArea">
+          <%= gravatar_for @user %>
+          <a href="https://gravatar.com/emails" target="_blank" rel="noopener" style="text-decoration: none;" class="profile_change_link">change</a>
+        </div>
+      </div>
+      <%= f.submit "Save changes", class: "btn btn-primary btn-lg mt-2" %>
+    <% end %>
+  </div>
+</div>
