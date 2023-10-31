@@ -281,7 +281,6 @@ a, span, p, div, table, th, td {
 
 // user page関連
 .profileHeader {
-
   border-bottom: 1px solid #ddd;
   padding: 10px 0 20px 30px;
   position: relative;
@@ -368,6 +367,39 @@ a, span, p, div, table, th, td {
     color: black;
     &:hover {
       color: #9b9b9b;
+    }
+  }
+}
+
+
+// memoの詳細画面
+.memoShow {
+  .content {
+    border: 1px solid #e4e4e4;
+    border-radius: 8px;
+    width: 790px;
+    padding: 13px 20px 10px;
+    margin-bottom: 20px;
+    .content-user {
+      display: flex;
+      .user-icon {
+        margin-right: 16px;
+      }
+      .user-name {
+        font-weight: bold;
+      }
+    }
+    .content-header {
+      margin-top: 12px;
+      .content-title {
+        font-weight: bold;
+      }
+      .content-time {
+        color: #9b9b9b;
+      }
+    }
+    .content-main {
+      margin-top: 20px;
     }
   }
 }

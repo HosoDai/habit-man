@@ -1,49 +1,50 @@
-<% provide(:title, "memos show") %>
+<% provide(:title, @memo.title) %>
 
-<div class="row" id="wrapper">
+<div id="groupContainer" class="groupPage" style="margin-top: 51px;">
   <!-- Sidebar -->
-  <div class="col-md-2">
+  <div id="groupAside">
     <%= render "groups/sidebar" %>
   </div>
-  <!-- Page content wrapper-->
-  <div id="page-content-wrapper" class="container-fluid col-md-10">
-      <!-- Page content-->
-      <div class="container-fluid">
-        <table class="table table-bordered border-success">
-          <tr>
-            <th>タイトル</th>
-            <td><%= @memo.title %></td>
-          </tr>
-          <tr>
-            <th>詳細</th>
-            <td><%= @memo.description %></td>
-          </tr>
-          <tr>
-            <th>ファイル</th>
-            <td>
-              <% unless @memo.memo_file.blank? %>
-                <%= link_to @memo.memo_file.identifier, group_memo_download_path(@group, @memo) %>
-              <% end %>
-            </td>
-          </tr>
-          <tr>
-            <th>ユーザー</th>
-            <td><%= @memo.user.name %> <%= gravatar_for @memo.user %></td>
-          </tr>
-        </table>
 
-        <% if @memo.user == current_user %>
-          <button type="button" class="btn btn-primary">
-            <%= link_to "編集", edit_group_memo_path(@group, @memo), class: "text-light text-decoration-none" %>
-          </button>
-          <button type="button" class="btn btn-danger">
-            <%= link_to "削除", [@group, @memo], data: { "turbo-method": :delete, turbo_confirm: "Are you sure?" }, class: "text-light text-decoration-none" %>
-          </button>
-        <% end %>
-        <button type="button" class="btn btn-secondary">
-          <%= link_to "一覧に戻る", group_memos_path(@group, memo_date: @memo.memo_date), class: "text-light text-decoration-none" %>
-        </button>
+  <!-- Main -->
+  <div id="main" class="groupPage memoShow" style="padding-left: 320px;">
+    <div class="content">
+      <div class="content-user">
+        <div class="user-icon">
+          <%= gravatar_for @memo.user %>
+        </div>
+        <div class="user-name">
+          <%= @memo.user.name %>
+        </div>
       </div>
+      <div class="content-header">
+        <div class="content-title">
+          <h2><%= @memo.title %></h2>
+        </div>
+        <div class="content-tag">
+          <%= render "memos/tag_list", tag_list: @memo.tag_list %>
+        </div>
+        <div class="content-time">
+          投稿日 <%= @memo.created_at.strftime("%Y/%m/%d %H:%M") %>
+        </div>
+      </div>
+      <div class="content-main">
+        <%= @memo.description %>
+      </div>
+    </div>
+    <div class="button-list">
+      <% if @memo.user == current_user %>
+        <button type="button" class="btn btn-primary">
+          <%= link_to "編集", edit_group_memo_path(@group, @memo), class: "text-light text-decoration-none" %>
+        </button>
+        <button type="button" class="btn btn-danger">
+          <%= link_to "削除", [@group, @memo], data: { "turbo-method": :delete, turbo_confirm: "Are you sure?" }, class: "text-light text-decoration-none" %>
+        </button>
+      <% end %>
+      <button type="button" class="btn btn-secondary">
+        <%= link_to "一覧に戻る", group_memos_path(@group, memo_date: @memo.memo_date), class: "text-light text-decoration-none" %>
+      </button>
+    </div>
   </div>
 </div>
 
