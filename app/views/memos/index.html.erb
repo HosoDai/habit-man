@@ -40,7 +40,9 @@
                 <%= link_to group_memo_path(@group, memo), class: "memo-link" do %>
                   <b><%= memo.title %></b><br>
                 <% end %>
-                <p style="text-overflow: ellipsis; white-space: nowrap; overflow: hidden;"><%= memo.description %></p>
+                <p style="text-overflow: ellipsis; white-space: nowrap; overflow: hidden;">
+                  <%= Rinku.auto_link(memo.description, :all, 'target="_blank"').html_safe %>
+                </p>
               </div>
             </div>
             <div class="boxFeedFooter">

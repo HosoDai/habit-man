@@ -29,7 +29,7 @@
         </div>
       </div>
       <div class="content-main">
-        <%= @memo.description %>
+        <%= Rinku.auto_link(@memo.description, :all, 'target="_blank"').html_safe %>
       </div>
     </div>
     <div class="button-list">

@@ -2,6 +2,7 @@ source "https://rubygems.org"
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 gem "rails",           "7.0.4"
+gem "rinku",           "2.0.6"
 # gem "natto",           "1.2.0"
 gem "pagy",            "6.0.4"
 gem "acts-as-taggable-on",  "9.0.1"
