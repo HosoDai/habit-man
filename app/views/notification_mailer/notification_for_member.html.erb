@@ -1,9 +1,13 @@
 <h1>Habit man</h1>
 
-<p>Notification from <b><%= @group.name %></b></p>
+<p>Group: <b><%= @group.name %></b></p>
 
 <p><b>Title: </b><%= @notification.title %></p>
+
+<p><b>Description: </b><%= Rinku.auto_link(@notification.description, :all, 'target="_blank"').html_safe %></p>
 
 <p><b>Date: </b><%= @notification.memo_date %></p>
 
 <p><b>From: </b><%= @notification.user.name %></p>
+
+
