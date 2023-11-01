@@ -32,7 +32,9 @@
         <%= Rinku.auto_link(@memo.description, :all, 'target="_blank"').html_safe %>
       </div>
       <div class="content-file">
-        <%= link_to @memo.memo_file.identifier, group_memo_download_path(@group, @memo) %>
+        <% unless @memo.memo_file.blank? %>
+          <%= link_to @memo.memo_file.identifier, group_memo_download_path(@group, @memo) %>
+        <% end %>
       </div>
     </div>
     <div class="button-list">
