@@ -31,6 +31,9 @@
       <div class="content-main">
         <%= Rinku.auto_link(@memo.description, :all, 'target="_blank"').html_safe %>
       </div>
+      <div class="content-file">
+        <%= link_to @memo.memo_file.identifier, group_memo_download_path(@group, @memo) %>
+      </div>
     </div>
     <div class="button-list">
       <% if @memo.user == current_user %>
