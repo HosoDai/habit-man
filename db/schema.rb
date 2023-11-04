@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_09_06_002107) do
+ActiveRecord::Schema[7.0].define(version: 2023_11_04_055734) do
   create_table "group_users", force: :cascade do |t|
     t.integer "user_id"
     t.integer "group_id"
@@ -85,6 +85,13 @@ ActiveRecord::Schema[7.0].define(version: 2023_09_06_002107) do
     t.string "reset_digest"
     t.datetime "reset_sent_at"
     t.index ["email"], name: "index_users_on_email", unique: true
+  end
+
+  create_table "view_counts", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "memo_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   add_foreign_key "group_users", "groups"

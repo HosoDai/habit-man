@@ -1,5 +1,5 @@
 class MemosController < ApplicationController
-  before_action :group_member, only: [:index]
+  before_action :group_member, only: [:index, :show]
   before_action :correct_memo_user, only: [:edit, :update, :destroy]
 
   def create
@@ -11,12 +11,6 @@ class MemosController < ApplicationController
     # あとでmemo_dateを保存する記述を追加
     @memo.memo_date = params[:memo][:memo_date].to_date
     @pagy, @memos = pagy(@group.memos.where(memo_date: params[:memo][:memo_date].to_date))
-    # p test_success
-    # p create_tag(@memo.title, @memo.description)
-    # tag_list = create_tag(@memo.title, @memo.description)
-    # tag_list.each do |tag, count|
-    #   @memo.tag_list << tag
-    # end
     if @memo.save
       # グループメンバーにメールで通知をする
       NotificationMailer.notification_for_member(@memo, @group).deliver_now
@@ -32,6 +26,9 @@ class MemosController < ApplicationController
   def show
     @memo = Memo.find(params[:id])
     @group = Group.find(params[:group_id])
+    unless ViewCount.find_by(user_id: current_user.id, memo_id: @memo.id)
+      current_user.view_counts.create(memo_id: @memo.id)
+    end
   end
 
   def index

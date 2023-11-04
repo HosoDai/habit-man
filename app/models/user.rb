@@ -14,6 +14,7 @@ class User < ApplicationRecord
   has_many :group_users
   has_many :groups, through: :group_users
   has_many :memos, dependent: :destroy
+  has_many :view_counts, dependent: :destroy
 
   # 渡された文字列のハッシュ値を返す
   def User.digest(string)

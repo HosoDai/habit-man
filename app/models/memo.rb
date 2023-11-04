@@ -2,6 +2,7 @@ class Memo < ApplicationRecord
   # アソシエーションを記述
   belongs_to :user
   belongs_to :group
+  has_many :view_counts, dependent: :destroy
 
   # バリデーションを記述
   validates :title, presence: true
