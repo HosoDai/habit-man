@@ -394,8 +394,12 @@ a, span, p, div, table, th, td {
       .content-title {
         font-weight: bold;
       }
-      .content-time {
-        color: #9b9b9b;
+      .content-option {
+        display: flex;
+        .content-time {
+          color: #9b9b9b;
+          margin-right: 20px;
+        }
       }
     }
     .content-main {

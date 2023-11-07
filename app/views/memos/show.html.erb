@@ -24,8 +24,13 @@
         <div class="content-tag">
           <%= render "memos/tag_list", tag_list: @memo.tag_list %>
         </div>
-        <div class="content-time">
-          投稿日 <%= @memo.created_at.strftime("%Y/%m/%d %H:%M") %>
+        <div class="content-option">
+          <div class="content-time">
+            投稿日 <%= @memo.created_at.strftime("%Y/%m/%d %H:%M") %>
+          </div>
+          <div class="feed-view_count">
+            <i class="fa-solid fa-signal"></i> <%= @memo.view_counts.count %>
+          </div>
         </div>
       </div>
       <div class="content-main">
