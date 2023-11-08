@@ -3,6 +3,7 @@ class GroupsController < ApplicationController
   before_action :correct_group_owner, only: [:edit, :update]
   before_action :set_biginning_of_week
 
+
   def index
     @groups = current_user.groups
     @group = Group.new
@@ -14,7 +15,7 @@ class GroupsController < ApplicationController
 
   def show
     @group = Group.find(params[:id])
-    @pagy, @memos = pagy(@group.memos.order(updated_at: :desc).limit(30))
+    @pagy, @memos = pagy(@group.memos.order(updated_at: :desc).limit(20))
     if params[:tag_name]
       @pagy, @memos = pagy(@memos.tagged_with(params[:tag_name]).limit(20))
     end
@@ -84,6 +85,11 @@ class GroupsController < ApplicationController
   def calendar
     @group = Group.find(params[:group_id])
     @memos = @group.memos
+  end
+
+  def archive
+    @group = Group.find(params[:group_id])
+    @pagy, @archives = pagy(@group.memos.where('updated_at < ?', 2.weeks.ago))
   end
 
 

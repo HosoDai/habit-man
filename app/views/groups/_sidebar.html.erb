@@ -32,6 +32,11 @@
           <% end %>
         </li>
         <li class="inactive">
+          <%= link_to group_archive_path(@group), class: "menu-item text-decoration-none text-black" do %>
+            <span class="text">アーカイブ</span>
+          <% end %>
+        </li>
+        <li class="inactive">
           <% if @group.owner_id == current_user.id %>
             <%= link_to edit_group_path(@group), class: "menu-item text-decoration-none text-black" do %>
               <span class="text">グループ設定</span>

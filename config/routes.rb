@@ -15,6 +15,7 @@ Rails.application.routes.draw do
     post :invite
     get :member
     get :calendar
+    get :archive
   end
   resources :account_activations, only: [:edit]
   resources :password_resets, only: [:new, :create, :edit, :update]
