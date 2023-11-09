@@ -138,6 +138,12 @@ a, span, p, div, table, th, td {
         font-size: 14px;
         color: #9b9b9b;
       }
+      .feed-option {
+        display: flex;
+        .feed-read_count {
+          margin-right: 10px;
+        }
+      }
     }
     .feedSection {
       border-bottom: 2px solid #9b9b9b;

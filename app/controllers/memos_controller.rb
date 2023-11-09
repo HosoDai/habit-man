@@ -26,9 +26,10 @@ class MemosController < ApplicationController
   def show
     @memo = Memo.find(params[:id])
     @group = Group.find(params[:group_id])
-    unless ViewCount.find_by(user_id: current_user.id, memo_id: @memo.id)
-      current_user.view_counts.create(memo_id: @memo.id)
+    unless ReadCount.find_by(user_id: current_user.id, memo_id: @memo.id)
+      current_user.read_counts.create(memo_id: @memo.id)
     end
+    current_user.view_counts.create(memo_id: @memo.id)
   end
 
   def index
