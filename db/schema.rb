@@ -10,7 +10,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_11_04_055734) do
+ActiveRecord::Schema[7.0].define(version: 2023_11_09_025106) do
+  create_table "archives", force: :cascade do |t|
+    t.string "title"
+    t.text "description"
+    t.integer "user_id"
+    t.integer "group_id"
+    t.date "memo_date"
+    t.string "memo_file"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["group_id"], name: "index_archives_on_group_id"
+    t.index ["user_id"], name: "index_archives_on_user_id"
+  end
+
   create_table "group_users", force: :cascade do |t|
     t.integer "user_id"
     t.integer "group_id"
@@ -94,6 +107,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_11_04_055734) do
     t.datetime "updated_at", null: false
   end
 
+  add_foreign_key "archives", "groups"
+  add_foreign_key "archives", "users"
   add_foreign_key "group_users", "groups"
   add_foreign_key "group_users", "users"
   add_foreign_key "memos", "groups"

@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'archives/index'
   get 'password_resets/new'
   get 'password_resets/edit'
   root "static_pages#home"
@@ -15,7 +16,7 @@ Rails.application.routes.draw do
     post :invite
     get :member
     get :calendar
-    get :archive
+    resources :archives, only: [:index]
   end
   resources :account_activations, only: [:edit]
   resources :password_resets, only: [:new, :create, :edit, :update]

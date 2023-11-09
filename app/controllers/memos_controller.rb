@@ -16,8 +16,8 @@ class MemosController < ApplicationController
       NotificationMailer.notification_for_member(@memo, @group).deliver_now
       # フラッシュメッセージ
       flash[:success] = "You succeeded in creating new memo!"
-      # redirect_to group_memo_path(@group, @memo)
-      redirect_back(fallback_location: group_memos_path(@group))
+      redirect_to group_memo_path(@group, @memo)
+      # redirect_back(fallback_location: group_memos_path(@group))
     else
       render "index", status: :unprocessable_entity
     end
