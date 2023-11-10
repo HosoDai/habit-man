@@ -28,6 +28,9 @@
           <div class="content-time">
             投稿日 <%= @memo.created_at.strftime("%Y/%m/%d %H:%M") %>
           </div>
+          <div class="feed-read_count">
+            <i class="fa-solid fa-eye"></i> <%= @memo.read_counts.count %>
+          </div>
           <div class="feed-view_count">
             <i class="fa-solid fa-signal"></i> <%= @memo.view_counts.count %>
           </div>
