@@ -30,6 +30,7 @@ class MemosController < ApplicationController
       current_user.read_counts.create(memo_id: @memo.id)
     end
     current_user.view_counts.create(memo_id: @memo.id)
+    @memo.update_attribute(:accessed_at, DateTime.current)
   end
 
   def index

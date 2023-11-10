@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_11_09_032625) do
+ActiveRecord::Schema[7.0].define(version: 2023_11_10_112416) do
   create_table "archives", force: :cascade do |t|
     t.string "title"
     t.text "description"
@@ -50,6 +50,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_11_09_032625) do
     t.date "memo_date"
     t.string "title"
     t.string "memo_file"
+    t.datetime "accessed_at"
     t.index ["group_id"], name: "index_memos_on_group_id"
     t.index ["user_id"], name: "index_memos_on_user_id"
   end
