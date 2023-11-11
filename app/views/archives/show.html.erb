@@ -35,7 +35,9 @@
         <%= Rinku.auto_link(@archive.description, :all, 'target="_blank"').html_safe %>
       </div>
       <div class="content-file">
-       <% #ファイルダウンロード %>
+        <% unless @archive.memo_file.blank? %>
+          <%= link_to @archive.memo_file.identifier, group_archive_download_path(@group, @archive) %>
+        <% end %>
       </div>
     </div>
     <% # アーカイブ編集ボタン %>
