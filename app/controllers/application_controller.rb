@@ -1,5 +1,5 @@
 class ApplicationController < ActionController::Base
   include SessionsHelper
   include Pagy::Backend
-  include GroupsHelper
+  # include GroupsHelper
 end

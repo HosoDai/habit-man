@@ -20,5 +20,6 @@ module MemberManagementApp
     # config.time_zone = "Central Time (US & Canada)"
     config.time_zone = "Tokyo"
     # config.eager_load_paths << Rails.root.join("extras")
+    config.paths.add 'lib', eager_load: true  # アーカイブのバッチ処理
   end
 end

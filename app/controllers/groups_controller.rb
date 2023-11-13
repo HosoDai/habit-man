@@ -15,7 +15,6 @@ class GroupsController < ApplicationController
 
   def show
     @group = Group.find(params[:id])
-    create_archive(@group, @group.memos)
     @pagy, @memos = pagy(@group.memos.order(updated_at: :desc).limit(20))
     if params[:tag_name]
       @pagy, @memos = pagy(@memos.tagged_with(params[:tag_name]).limit(20))
