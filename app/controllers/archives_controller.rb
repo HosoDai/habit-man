@@ -1,7 +1,7 @@
 class ArchivesController < ApplicationController
   def index
     @group = Group.find(params[:group_id])
-    @pagy, @archives = pagy(@group.archives)
+    @pagy, @archives = pagy(@group.archives.order(memo_date: :desc))
   end
 
   def show
