@@ -2,6 +2,7 @@ source "https://rubygems.org"
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 gem "rails",           "7.0.4"
+gem "dotenv-rails",    "2.8.1"
 gem 'whenever', require: false
 gem "rinku",           "2.0.6"
 # gem "natto",           "1.2.0"

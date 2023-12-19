@@ -36,3 +36,6 @@
 
 # Ignore uploaded image files
 /public/uploads
+
+# Ignore .env file
+.env.production
