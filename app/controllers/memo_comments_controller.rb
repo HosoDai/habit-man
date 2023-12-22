@@ -1,0 +1,2 @@
+class MemoCommentsController < ApplicationController
+end

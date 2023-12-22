@@ -4,6 +4,7 @@ class Memo < ApplicationRecord
   belongs_to :group
   has_many :view_counts, dependent: :destroy
   has_many :read_counts, dependent: :destroy
+  has_many :memo_comments, dependent: :destroy
 
   # バリデーションを記述
   validates :title, presence: true

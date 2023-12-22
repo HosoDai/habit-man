@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_11_15_000544) do
+ActiveRecord::Schema[7.0].define(version: 2023_12_22_140814) do
   create_table "archives", force: :cascade do |t|
     t.string "title"
     t.text "description"
@@ -39,6 +39,14 @@ ActiveRecord::Schema[7.0].define(version: 2023_11_15_000544) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "image"
+  end
+
+  create_table "memo_comments", force: :cascade do |t|
+    t.text "comment"
+    t.integer "user_id"
+    t.integer "memo_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "memos", force: :cascade do |t|

@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  get 'archives/index'
+  # get 'archives/index'
   get 'password_resets/new'
   get 'password_resets/edit'
   root "static_pages#home"
@@ -9,8 +9,9 @@ Rails.application.routes.draw do
   delete "/logout", to: "sessions#destroy"
   resources :users
   resources :groups, except: [:new] do
-    resources :memos do
+    resources :memos, except: [:new] do
       get :download
+      resources :comments, only: [:create, :destroy]
     end
     get :join
     post :invite
