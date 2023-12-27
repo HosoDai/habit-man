@@ -11,6 +11,11 @@
         <div class="comment-time">
           <%= memo_comment.created_at.strftime("%Y/%m/%d %H:%M") %>
         </div>
+        <div class="comment-delete_link">
+          <% if memo_comment.user == current_user %>
+            <%= link_to "削除", [@group, @memo, memo_comment], data: { "turbo-method": :delete, turbo_confirm: "Are you sure?" }, class: "text-decoration-none" %>
+          <% end %>
+        </div>
       </div>
       <div class="comment-body">
         <%= memo_comment.comment %>
