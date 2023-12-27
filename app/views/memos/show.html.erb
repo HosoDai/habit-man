@@ -45,6 +45,12 @@
         <% end %>
       </div>
     </div>
+
+    <div class="comment-area">
+      <%= render "memo_comments/index" %>
+      <%= render "memo_comments/form" %>
+    </div>
+
     <div class="button-list">
       <% if @memo.user == current_user %>
         <button type="button" class="btn btn-primary">

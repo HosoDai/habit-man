@@ -11,7 +11,7 @@ Rails.application.routes.draw do
   resources :groups, except: [:new] do
     resources :memos, except: [:new] do
       get :download
-      resources :comments, only: [:create, :destroy]
+      resources :memo_comments, only: [:create, :destroy]
     end
     get :join
     post :invite

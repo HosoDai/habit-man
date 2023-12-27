@@ -1,0 +1,22 @@
+<% @memo.memo_comments.each do |memo_comment| %>
+  <section class="comment-index">
+    <div class="user-icon">
+      <%= gravatar_for memo_comment.user %>
+    </div>
+    <div class="comment-section">
+      <div class="user-section">
+        <div class="user-name">
+          <%= memo_comment.user.name %>
+        </div>
+        <div class="comment-time">
+          <%= memo_comment.created_at.strftime("%Y/%m/%d %H:%M") %>
+        </div>
+      </div>
+      <div class="comment-body">
+        <%= memo_comment.comment %>
+      </div>
+    </div>
+  </section>
+<% end %>
+
+

@@ -415,3 +415,31 @@ a, span, p, div, table, th, td {
     }
   }
 }
+
+
+// コメント機能レイアウト
+.comment-index {
+  display: flex;
+  border: 1px solid #e4e4e4;
+  border-radius: 8px;
+  width: 790px;
+  padding: 13px 20px 10px;
+  margin-bottom: 20px;
+  .user-icon {
+    margin-right: 20px;
+  }
+  .user-section {
+    display: flex;
+    .user-name {
+      font-weight: bold;
+      margin-right: 20px;
+    }
+    .comment-time {
+      color: #9b9b9b;
+    }
+  }
+}
+
+.comment-form {
+  margin-bottom: 20px;
+}
