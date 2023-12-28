@@ -46,6 +46,8 @@ class MemosController < ApplicationController
 
   def update
     if @memo.update(memo_params)
+      # グループメンバーにメールで通知をする
+      NotificationMailer.notification_for_member(@memo, @group).deliver_now
       flash[:success] = "memo information updated"
       redirect_to group_memo_path(@group, @memo)
     else

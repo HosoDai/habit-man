@@ -7,6 +7,8 @@ class MemoCommentsController < ApplicationController
     @comment = current_user.memo_comments.new(memo_comment_params)
     @comment.memo_id = @memo.id
     if @comment.save
+      # ポストに関わった人たち全員にメールで通知をする
+      NotificationMailer.comment_notification(@memo, @comment, @group).deliver_now
       flash[:success] = "You succeeded in creating new comment!"
       redirect_to group_memo_path(@group, @memo)
     else

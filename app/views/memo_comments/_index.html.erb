@@ -18,7 +18,7 @@
         </div>
       </div>
       <div class="comment-body">
-        <%= memo_comment.comment %>
+        <%= Rinku.auto_link(memo_comment.comment, :all, 'target="_blank"').html_safe %>
       </div>
     </div>
   </section>

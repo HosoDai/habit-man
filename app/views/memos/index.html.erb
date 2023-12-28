@@ -34,11 +34,8 @@
                       <%= memo.created_at.strftime("%Y/%m/%d %H:%M") %>
                     </div>
                     <div class="feed-option">
-                      <div class="feed-read_count">
-                        <i class="fa-solid fa-eye"></i> <%= memo.read_counts.count %>
-                      </div>
-                      <div class="feed-view_count">
-                        <i class="fa-solid fa-signal"></i> <%= memo.view_counts.count %>
+                      <div class="feed-comment-count">
+                        <i class="fa-regular fa-comments"></i> <%= memo.memo_comments.count %>
                       </div>
                     </div>
                   </div>
