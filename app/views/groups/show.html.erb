@@ -12,6 +12,9 @@
       <div class="tag-search-form">
         <%= render "layouts/tag_search" %>
       </div>
+      <div class="memoCreateModal">
+        <%= render "groups/memo_create_modal_from_timeline" %>
+      </div>
       <% @memos.each do |memo| %>
         <div class="content">
           <div class="boxBalloon">

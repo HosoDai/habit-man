@@ -1,0 +1,45 @@
+<%= form_with(model: [@group, @memo]) do |f| %>
+  <%= render "shared/error_messages", object: f.object %>
+
+  <!-- Button trigger modal -->
+  <button type="button" class="btn btn-primary ms-auto" data-bs-toggle="modal" data-bs-target="#exampleModal">
+    new memo
+  </button>
+
+  <!-- Modal -->
+  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">memo create form</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+
+          <div class="modal-body">
+
+            <%= f.label :title %>
+            <%= f.text_field :title, class: "form-control" %>
+
+            <%= f.label :description %>
+            <%= f.text_area :description, class: "form-control" %>
+
+            <%= f.label :file %>
+            <%= f.file_field :memo_file, class: "form-control" %>
+
+            <% # 日付を選択できるようにする %>
+            <%= f.label :date %>
+            <%= f.date_field :memo_date, required: true, class: "form-control" %>
+
+            <%= f.label :tag_list %>
+            <p>Please separate tags with ,</p>
+            <%= f.text_field :tag_list, value: @memo.tag_list.join(","), class: "form-control" %>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            <%= f.submit "Submit", class: "btn btn-primary" %>
+          </div>
+
+      </div>
+    </div>
+  </div>
+<% end %>

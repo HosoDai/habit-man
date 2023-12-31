@@ -11,10 +11,9 @@ class NotificationMailer < ApplicationMailer
     @group = group
     array_email = []
     @memo.memo_comments.each do |memo_comment|
-      unless
-        array_email.append(memo_comment.user.email)
-      end
+      array_email.append(memo_comment.user.email)
     end
+   array_email.append(@memo.user.email)
     mail bcc: array_email, subject: "#{@comment.comment} from #{@comment.user.name}"
   end
 end
