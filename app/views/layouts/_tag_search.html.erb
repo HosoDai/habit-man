@@ -1,6 +1,6 @@
 <div class="input-group">
   <%= form_with(url: group_path, method: :get, class: "form-control") do |f| %>
-    <%= f.text_field :tag_name, placeholder: "タグを絞り込む", size: 80 %>
+    <%= f.text_field :key_word, placeholder: "データを絞り込む", size: 60 %>
     <%= button_tag type: "submit", class: "btn btn-outline-success" do %>
       <i class="fas fa-search"></i>
     <% end %>
