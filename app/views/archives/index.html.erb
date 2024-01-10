@@ -14,6 +14,9 @@
           <h2 class="heading"><b>Archives</h2>
         </div>
       </div>
+      <div class="tag-search-form">
+        <%= render "archives/keyword_search_archive" %>
+      </div>
       <% @archives.each do |archive| %>
         <div class="content">
           <div class="boxBalloon">

@@ -2,6 +2,12 @@ class ArchivesController < ApplicationController
   def index
     @group = Group.find(params[:group_id])
     @pagy, @archives = pagy(@group.archives.order(memo_date: :desc))
+    if params[:key_word]
+      @pagy, @archives = pagy(@archives.where("title LIKE ?", "%#{params[:key_word]}%"))
+      unless @archives.present?
+        @pagy, @archives = pagy(@group.archives.tagged_with(params[:key_word]))
+      end
+    end
   end
 
   def show
