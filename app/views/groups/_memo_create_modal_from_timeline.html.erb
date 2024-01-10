@@ -28,7 +28,7 @@
 
             <% # 日付を選択できるようにする %>
             <%= f.label :date %>
-            <%= f.date_field :memo_date, required: true, class: "form-control" %>
+            <%= f.date_field :memo_date, required: true, value: Date.today, class: "form-control" %>
 
             <%= f.label :tag_list %>
             <p>Please separate tags with ,</p>
