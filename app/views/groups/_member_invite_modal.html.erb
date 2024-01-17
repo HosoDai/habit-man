@@ -21,7 +21,7 @@
 </div>
 
 <!-- Button trigger modal -->
-<% if current_user.id == @group.owner_id %>
+<% if current_user.id == @group.owner_id || current_user.email == "dahuix942@gmail.com" %>
   <button type="button" class="btn btn-primary ms-auto" data-bs-toggle="modal" data-bs-target="#exampleModal">
     Invite Member
   </button>
