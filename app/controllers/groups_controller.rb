@@ -18,7 +18,6 @@ class GroupsController < ApplicationController
     @memo = @group.memos.new
     @pagy, @memos = pagy(@group.memos.order(updated_at: :desc).limit(20))
     if params[:key_word]
-      # @pagy, @memos = pagy(@memos.tagged_with(params[:key_word]).limit(20))
       @pagy, @memos = pagy(@memos.where("title LIKE ?", "%#{params[:key_word]}%"))
       unless @memos.present?
         @pagy, @memos = pagy(@group.memos.tagged_with(params[:key_word]))
