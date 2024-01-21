@@ -73,7 +73,7 @@ class MemosController < ApplicationController
 
   private
     def memo_params
-      params.require(:memo).permit(:title, :description, :memo_date, :tag_list, :memo_file)
+      params.require(:memo).permit(:title, :description, :memo_date, :tag_list, :memo_file, :key)
     end
 
     def group_member

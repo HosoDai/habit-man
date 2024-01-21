@@ -91,6 +91,11 @@ class GroupsController < ApplicationController
     @memos = @group.memos
   end
 
+  def key_memos
+    @group = Group.find(params[:group_id])
+    @pagy, @memos = pagy(@group.memos.where(key: true))
+  end
+
   # def archive
   #   @group = Group.find(params[:group_id])
   #   @pagy, @archives = pagy(@group.memos.where('updated_at < ?', 2.weeks.ago))

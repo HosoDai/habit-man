@@ -17,6 +17,7 @@ Rails.application.routes.draw do
     post :invite
     get :member
     get :calendar
+    get :key_memos
     resources :archives, only: [:index, :show] do
       get :download
     end

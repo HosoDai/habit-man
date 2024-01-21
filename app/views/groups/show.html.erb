@@ -40,9 +40,16 @@
                 </div>
               </div>
               <div class="body">
-                <%= link_to group_memo_path(@group, memo), class: "memo-link" do %>
-                  <b><%= memo.title %></b><br>
-                <% end %>
+                <div class="body-title">
+                  <%= link_to group_memo_path(@group, memo), class: "memo-link" do %>
+                    <b><%= memo.title %></b><br>
+                  <% end %>
+                  <div class="feed-key">
+                    <% if memo.key == true %>
+                      <i class="fa-solid fa-lock"></i>
+                    <% end %>
+                  </div>
+                </div>
                 <p style="text-overflow: ellipsis; white-space: nowrap; overflow: hidden;">
                   <%= Rinku.auto_link(memo.description, :all, 'target="_blank"').html_safe %>
                 </p>

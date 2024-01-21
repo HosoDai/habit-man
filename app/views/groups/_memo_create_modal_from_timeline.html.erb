@@ -33,6 +33,9 @@
             <%= f.label :tag_list %>
             <p>Please separate tags with ,</p>
             <%= f.text_field :tag_list, value: @memo.tag_list.join(","), class: "form-control" %>
+
+            <%= f.label :key %>
+            <%= f.check_box :key, { checked: false }, class: "form-control" %>
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>

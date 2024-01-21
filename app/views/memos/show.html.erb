@@ -20,6 +20,11 @@
       <div class="content-header">
         <div class="content-title">
           <h2><%= @memo.title %></h2>
+          <div class="feed-key">
+            <% if @memo.key == true %>
+              <i class="fa-solid fa-lock"></i>
+            <% end %>
+          </div>
         </div>
         <div class="content-tag">
           <%= render "memos/tag_list", tag_list: @memo.tag_list %>

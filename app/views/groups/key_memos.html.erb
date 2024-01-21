@@ -1,4 +1,4 @@
-<% provide(:title, "Memos index") %>
+<% provide(:title, @group.name) %>
 
 <div id="groupContainer" class="groupPage" style="margin-top: 51px;">
   <!-- Sidebar -->
@@ -7,15 +7,12 @@
   </div>
 
   <!-- Main -->
-  <div id="main" class="groupPage memoIndex" style="padding-left: 320px;">
+  <div id="main" class="groupPage" style="padding-left: 320px;">
     <div class="unitContent">
-      <div class="headingMemos">
+      <div class="headingKeyMemos" style="color: blue;">
         <div class="memoMain">
-          <h2 class="heading"><b><%= @date %></b> のメモ一覧</h2>
+          <h2 class="heading"><b>KeyMemos</h2>
         </div>
-      </div>
-      <div class="memoCreateModal">
-        <%= render "memos/memo_create_modal" %>
       </div>
       <% @memos.each do |memo| %>
         <div class="content">
@@ -69,3 +66,6 @@
     </div>
   </div>
 </div>
+
+
+
