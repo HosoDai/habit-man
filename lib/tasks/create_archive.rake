@@ -5,7 +5,7 @@ namespace :create_archive do
   task add_archive: :environment do
     Group.all.each do |group|
       group.memos.each do |memo|
-        if memo.accessed_at == nil || memo.accessed_at < 2.weeks.ago || memo.key == false
+        if memo.accessed_at == nil || (memo.accessed_at < 2.weeks.ago && memo.key == false)
           archive = group.archives.new(
                                        title: memo.title,
                                        description: memo.description,
