@@ -153,6 +153,9 @@ a, span, p, div, table, th, td {
     }
     .feedSection {
       border-bottom: 2px solid #9b9b9b;
+      .memo-link {
+        text-decoration: none;
+      }
       .body-title {
         display: flex;
         .memo-link {
@@ -201,7 +204,7 @@ a, span, p, div, table, th, td {
   }
 
   // group members
-  .headingMembers, .headingGroupSettings, .headingArchives, .headingKeyMemos {
+  .headingMembers, .headingGroupSettings, .headingArchives, .headingKeyMemos, .headingMemoEdit {
     background-color: #fff;
     border: 1px solid #e4e4e4;
     margin-bottom: 30px;
@@ -454,4 +457,24 @@ a, span, p, div, table, th, td {
 
 .comment-form {
   margin-bottom: 20px;
+}
+
+
+// memo edit form
+.memoEditForm {
+  .editMemoSection {
+    display: flex;
+    border-bottom: 1px solid #e4e4e4;
+    margin-bottom: 10px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    .memoItemLabel {
+      color: #a2a2a2;
+      font-weight: bold;
+      margin-right: 70px;
+    }
+    .memoInputForm {
+      border: 1px solid #e4e4e4;
+    }
+  }
 }

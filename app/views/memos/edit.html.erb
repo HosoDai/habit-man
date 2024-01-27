@@ -1,37 +1,48 @@
 <% provide(:title, "memos edit") %>
 
-<div class="row" id="wrapper">
+<div id="groupContainer" class="groupPage" style="margin-top: 51px;">
   <!-- Sidebar -->
-  <div class="col-md-2">
+  <div id="groupAside">
     <%= render "groups/sidebar" %>
   </div>
-  <!-- Page content wrapper-->
-  <div id="page-content-wrapper" class="container-fluid col-md-10">
-      <!-- Page content-->
-      <div class="container-fluid">
-        <%= form_with(model: @memo, url: group_memo_path) do |f| %>
-          <%= render "shared/error_messages", object: f.object %>
 
-          <table class="table table-bordered border-success">
-            <tr>
-              <th><%= f.label(:title, "タイトル") %></th>
-              <td><%= f.text_field :title, class: "form-control" %></td>
-            </tr>
-            <tr>
-              <th><%= f.label(:description, "詳細") %></th>
-              <td><%= f.text_area :description, class: "form-control" %></td>
-            </tr>
-            <tr>
-              <th>
-                <%= f.label :tag_list %>
-                <p>Please separate tags with ,</p>
-              </th>
-              <td><%= f.text_field :tag_list, value: @memo.tag_list.join(","), class: "form-control" %></td>
-            </tr>
-          </table>
-          <%= f.submit "Save changes", class: "btn btn-primary" %>
-        <% end %>
+  <!-- Main -->
+  <div id="main" class="memoEditPage" style="padding-left: 320px;">
+    <div class="headingMemoEdit">
+      <div class="groupMain">
+        <h2 class="heading">Memo Edit Page</h2>
       </div>
+    </div>
+    <div class="memoEditForm">
+      <%= form_with(model: @memo, url: group_memo_path) do |f| %>
+        <%= render "shared/error_messages", object: f.object %>
+        <div class="editMemoSection">
+          <p class="memoItemLabel"><%= f.label :title, "タイトル" %></p>
+          <div class="memoTitleArea">
+            <%= f.text_field :title, class: "memoInputForm", size: 50 %>
+          </div>
+        </div>
+        <div class="editMemoSection">
+          <p class="memoItemLabel"><%= f.label :description, "詳細" %></p>
+          <div class="memoDescriptionArea">
+            <%= f.text_area :description, class: "memoInputForm" %>
+          </div>
+        </div>
+        <div class="editMemoSection">
+          <p class="memoItemLabel"><%= f.label :tag_list, "タグ(please separate tag with ,)" %></p>
+          <div class="memoTagArea">
+            <%= f.text_field :tag_list, value: @memo.tag_list.join(","), class: "memoInputForm" %>
+          </div>
+        </div>
+        <div class="editMemoSection">
+          <p class="memoItemLabel"><%= f.label :key %></p>
+          <div class="memoKeyArea">
+            <%= f.check_box :key, class: "memoInputForm" %>
+          </div>
+        </div>
+        <%= f.submit "Save changes", class: "btn btn-primary btn-lg mt-2" %>
+      <% end %>
+    </div>
   </div>
 </div>
 

@@ -33,16 +33,15 @@
                     <div class="feed-date">
                       <%= archive.memo_date %>
                     </div>
-                    <div class="feed-option">
-
-                    </div>
                   </div>
                 </div>
               </div>
               <div class="body">
-                <%= link_to group_archive_path(@group, archive), class: "memo-link" do %>
-                  <b><%= archive.title %></b><br>
-                <% end %>
+                <div class="body-title">
+                  <%= link_to group_archive_path(@group, archive), class: "memo-link" do %>
+                    <b><%= archive.title %></b><br>
+                  <% end %>
+                </div>
                 <p style="text-overflow: ellipsis; white-space: nowrap; overflow: hidden;">
                   <%= Rinku.auto_link(archive.description, :all, 'target="_blank"').html_safe %>
                 </p>
