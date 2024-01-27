@@ -92,17 +92,17 @@ Rails.application.configure do
   config.active_record.dump_schema_after_migration = false
 
   # メール設定
-  config.action_mailer.perform_caching = false
+  # config.action_mailer.perform_caching = false
   config.action_mailer.delivery_method = :smtp
-  config.action_mailer.perform_deliveries = true
+  # config.action_mailer.perform_deliveries = true
   host = 'membermanagementapp-d0c147b97826.herokuapp.com'
-  config.action_mailer.default_url_options = { host: host }
+  config.action_mailer.default_url_options = { host: host, protocol: "https" }
   ActionMailer::Base.smtp_settings = {
-    :address        => 'smtp.sendgrid.net',
+    :address        => 'smtp.gmail.com',
     :port           => '587',
-    :domain         => 'herokuapp.com',
-    :user_name      => 'apikey',
-    :password       => ENV['SENDGRID_API_KEY'],
+    :domain         => 'gmail.com',
+    :user_name      => ENV['GMAIL_USERNAME'],
+    :password       => ENV['GMAIL_PASSWORD'],
     :enable_starttls_auto => true,
     :authentication => :plain,
   }
