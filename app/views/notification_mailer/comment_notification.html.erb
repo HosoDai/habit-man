@@ -2,7 +2,7 @@
 
 <p><b>Group: </b><%= @group.name %></p>
 
-<p><b>Comment: </b><%= Rinku.auto_link(@comment.comment, :all, 'target="_blank"').html_safe %></p>
+<p><b>Comment: </b><%= Rinku.auto_link(simple_format(@comment.comment), :all, 'target="_blank"').html_safe %></p>
 
 <p><b>Date: </b><%= @comment.created_at.strftime("%Y/%m/%d %H:%M") %></p>
 

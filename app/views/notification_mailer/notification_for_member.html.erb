@@ -4,7 +4,7 @@
 
 <p><b>Title: </b><%= @notification.title %></p>
 
-<p><b>Description: </b><%= Rinku.auto_link(@notification.description, :all, 'target="_blank"').html_safe %></p>
+<p><b>Description: </b><%= Rinku.auto_link(simple_format(@notification.description), :all, 'target="_blank"').html_safe %></p>
 
 <p><b>Date: </b><%= @notification.memo_date %></p>
 
