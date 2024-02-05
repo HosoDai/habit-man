@@ -25,13 +25,13 @@
         <div class="editMemoSection">
           <p class="memoItemLabel"><%= f.label :description, "詳細" %></p>
           <div class="memoDescriptionArea">
-            <%= f.text_area :description, class: "memoInputForm" %>
+            <%= f.text_area :description, class: "memoInputForm", size: "75x5" %>
           </div>
         </div>
         <div class="editMemoSection">
           <p class="memoItemLabel"><%= f.label :tag_list, "タグ(please separate tag with ,)" %></p>
           <div class="memoTagArea">
-            <%= f.text_field :tag_list, value: @memo.tag_list.join(","), class: "memoInputForm" %>
+            <%= f.text_field :tag_list, value: @memo.tag_list.join(","), class: "memoInputForm", size: 50 %>
           </div>
         </div>
         <div class="editMemoSection">

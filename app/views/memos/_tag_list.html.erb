@@ -1,4 +1,4 @@
 <% tag_list.each do |tag| %>
   <i class="fa-solid fa-tag"></i>
-  <%= link_to tag, group_path(@group, tag_name: tag), class: "text-decoration-none" %>
+  <%= link_to tag, group_path(@group, key_word: tag), class: "text-decoration-none" %>
 <% end %>
