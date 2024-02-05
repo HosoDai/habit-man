@@ -1,0 +1,4 @@
+<% tag_list.each do |tag| %>
+  <i class="fa-solid fa-tag"></i>
+  <%= link_to tag, group_archives_path(@group, key_word: tag), class: "text-decoration-none" %>
+<% end %>
